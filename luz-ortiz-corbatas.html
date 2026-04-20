@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUZ ORTIZ · Corbatas de Autor</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{overflow-x:hidden;background:#FAF8F5;font-family:'Outfit',sans-serif;}
+a{text-decoration:none;color:inherit;}
+
+:root{
+--black:#0A0A0A;--dk:#1A1A1A;--charcoal:#2C2C2C;--warm:#8A8178;
+--sand:#C4B5A4;--cream:#F5F0EB;--ivory:#FAF8F5;--white:#FFFFFF;
+--gold:#B8956A;--gold-lt:#D4B896;--accent:#8B4513;
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-10deg)}50%{transform:translateY(-12px) rotate(-8deg)}}
+
+/* ───── NAVBAR ───── */
+.topbar{background:var(--black);color:var(--cream);font-size:11px;letter-spacing:2.5px;text-align:center;padding:8px 20px;font-weight:300;text-transform:uppercase;}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all .5s cubic-bezier(.4,0,.2,1);}
+.navbar.scrolled{background:rgba(250,248,245,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(196,181,164,.3);}
+.navbar.scrolled .topbar{display:none;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;max-width:1400px;margin:0 auto;}
+.nav-links{display:flex;gap:32px;align-items:center;flex:1;}
+.nav-links a,.nav-right-links a{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#fff;font-weight:300;transition:all .3s;border-bottom:1px solid transparent;padding-bottom:2px;}
+.nav-links a:hover,.nav-right-links a:hover{border-bottom-color:currentColor;}
+.navbar.scrolled .nav-links a,.navbar.scrolled .nav-right-links a{color:var(--black);}
+.logo-wrap{text-align:center;flex:1;}
+.logo{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:28px;letter-spacing:8px;text-transform:uppercase;color:#fff;transition:color .5s;}
+.logo-sub{font-weight:200;font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:2px;transition:color .5s;}
+.navbar.scrolled .logo{color:var(--black);}
+.navbar.scrolled .logo-sub{color:var(--warm);}
+.nav-right{display:flex;gap:28px;align-items:center;flex:1;justify-content:flex-end;}
+.nav-right-links{display:flex;gap:28px;}
+.nav-icons{display:flex;gap:16px;margin-left:8px;align-items:center;}
+.nav-icons svg{cursor:pointer;transition:stroke .3s;}
+.navbar.scrolled .nav-icons svg{stroke:var(--black);}
+.cart-badge{position:absolute;top:-6px;right:-8px;background:var(--gold);color:#fff;font-size:9px;font-weight:500;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+
+/* ───── HERO ───── */
+.hero{height:100vh;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--black) 0%,#1a1520 30%,#2a1a2a 60%,var(--dk) 100%);}
+.hero-pattern{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(184,149,106,.03) 40px,rgba(184,149,106,.03) 41px),repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(184,149,106,.03) 40px,rgba(184,149,106,.03) 41px);}
+.hero-orb1{position:absolute;top:10%;right:15%;width:500px;height:500px;background:radial-gradient(circle,rgba(139,69,19,.15) 0%,transparent 70%);border-radius:50%;filter:blur(60px);}
+.hero-orb2{position:absolute;bottom:10%;left:10%;width:400px;height:400px;background:radial-gradient(circle,rgba(184,149,106,.1) 0%,transparent 70%);border-radius:50%;filter:blur(80px);}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 48px;}
+.hero-label{font-size:11px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:32px;font-weight:300;animation:fadeIn 1.2s ease-out;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:82px;line-height:1.05;color:#fff;max-width:900px;margin-bottom:24px;animation:fadeUp 1s ease-out .3s both;}
+.hero h1 span{font-style:italic;color:var(--gold-lt);}
+.hero p{font-weight:200;font-size:16px;line-height:1.8;color:rgba(255,255,255,.6);max-width:520px;margin-bottom:48px;animation:fadeUp 1s ease-out .6s both;}
+.hero-btns{display:flex;gap:20px;animation:fadeUp 1s ease-out .9s both;}
+.btn-gold{font-size:12px;letter-spacing:3px;text-transform:uppercase;padding:16px 48px;background:var(--gold);color:#fff;border:none;cursor:pointer;font-weight:400;font-family:'Outfit',sans-serif;transition:all .4s;}
+.btn-gold:hover{background:var(--gold-lt);transform:translateY(-2px);}
+.btn-outline{font-size:12px;letter-spacing:3px;text-transform:uppercase;padding:16px 48px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);cursor:pointer;font-weight:300;font-family:'Outfit',sans-serif;transition:all .4s;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.scroll-ind{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;animation:fadeIn 1.5s ease-out 1.5s both;}
+.scroll-ind span{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(184,149,106,.6),transparent);animation:pulse 2s ease-in-out infinite;}
+
+/* ───── MARQUEE ───── */
+.marquee-strip{background:var(--ivory);border-top:1px solid var(--cream);border-bottom:1px solid var(--cream);padding:14px 0;overflow:hidden;}
+.marquee-track{display:flex;animation:marquee 30s linear infinite;white-space:nowrap;}
+.marquee-track span{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--warm);font-weight:300;}
+
+/* ───── SECTIONS ───── */
+.section{padding:100px 48px;}
+.section-center{max-width:1200px;margin:0 auto;}
+.section-wide{max-width:1300px;margin:0 auto;}
+.section-label{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-weight:300;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:44px;color:var(--black);font-weight:300;}
+.section-title em{font-style:italic;}
+
+/* ───── COLLECTIONS ───── */
+.collections-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px;}
+.col-card{position:relative;overflow:hidden;cursor:pointer;height:460px;}
+.col-card-overlay{position:absolute;inset:0;background:rgba(0,0,0,.35);transition:background .5s;}
+.col-card:hover .col-card-overlay{background:rgba(0,0,0,.2);}
+.col-card-content{position:absolute;bottom:40px;left:40px;right:40px;z-index:2;}
+.col-count{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:12px;font-weight:300;}
+.col-name{font-family:'Cormorant Garamond',serif;font-size:32px;color:#fff;font-weight:300;margin-bottom:8px;}
+.col-desc{font-size:13px;color:rgba(255,255,255,.7);font-weight:200;margin-bottom:24px;}
+.col-link{display:inline-flex;align-items:center;gap:12px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#fff;font-weight:300;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:4px;transition:transform .4s;}
+.col-card:hover .col-link{transform:translateX(8px);}
+
+/* ───── PRODUCTS ───── */
+.products-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px;}
+.filter-btns{display:flex;gap:24px;}
+.filter-btn{font-size:11px;letter-spacing:2px;text-transform:uppercase;background:none;border:none;color:var(--warm);cursor:pointer;font-weight:200;border-bottom:1px solid transparent;padding-bottom:4px;transition:all .3s;font-family:'Outfit',sans-serif;}
+.filter-btn.active{color:var(--black);font-weight:400;border-bottom-color:var(--black);}
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;}
+.product-card{cursor:pointer;opacity:0;animation:fadeUp .7s ease-out forwards;}
+.product-img{position:relative;aspect-ratio:3/4;overflow:hidden;margin-bottom:16px;transition:transform .6s cubic-bezier(.4,0,.2,1);}
+.product-card:hover .product-img{transform:scale(1.02);}
+.tie-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.2;transition:all .6s;}
+.product-card:hover .tie-icon{opacity:.4;transform:rotate(5deg) scale(1.1);}
+.product-tag{position:absolute;top:16px;left:16px;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.4);backdrop-filter:blur(10px);padding:6px 14px;font-weight:400;}
+.product-actions{position:absolute;bottom:0;left:0;right:0;padding:16px;display:flex;gap:8px;transform:translateY(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);}
+.product-card:hover .product-actions{transform:translateY(0);}
+.btn-add{flex:1;padding:12px 0;font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;border:none;background:rgba(255,255,255,.95);color:var(--black);cursor:pointer;font-weight:400;}
+.btn-fav{padding:12px 14px;border:none;background:rgba(255,255,255,.95);cursor:pointer;display:flex;align-items:center;}
+.product-fabric{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--warm);margin-bottom:6px;font-weight:300;}
+.product-name{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--black);margin-bottom:6px;font-weight:400;}
+.product-price{font-size:14px;color:var(--charcoal);font-weight:300;}
+.view-all-wrap{text-align:center;margin-top:64px;}
+.btn-view-all{font-size:12px;letter-spacing:3px;text-transform:uppercase;padding:16px 56px;background:transparent;color:var(--black);border:1px solid var(--sand);cursor:pointer;font-weight:300;font-family:'Outfit',sans-serif;transition:all .4s;}
+.btn-view-all:hover{background:var(--black);color:#fff;border-color:var(--black);}
+
+/* ───── BESPOKE ───── */
+.bespoke{background:var(--black);padding:120px 48px;position:relative;overflow:hidden;}
+.bespoke-bg{position:absolute;top:0;right:0;width:40%;height:100%;background:linear-gradient(180deg,rgba(184,149,106,.05) 0%,transparent 100%);}
+.bespoke-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto;position:relative;z-index:2;}
+.bespoke-label{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;font-weight:300;}
+.bespoke-title{font-family:'Cormorant Garamond',serif;font-size:52px;color:#fff;font-weight:300;line-height:1.15;margin-bottom:24px;}
+.bespoke-title span{font-style:italic;color:var(--gold-lt);}
+.bespoke-desc{font-size:15px;line-height:1.8;color:rgba(255,255,255,.5);font-weight:200;margin-bottom:48px;}
+.step{padding:24px 0;border-bottom:1px solid rgba(255,255,255,.1);cursor:pointer;transition:all .4s;}
+.step:first-child{border-top:1px solid rgba(255,255,255,.1);}
+.step-row{display:flex;align-items:flex-start;gap:20px;}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:28px;color:rgba(255,255,255,.2);font-weight:300;transition:color .4s;min-width:40px;}
+.step.active .step-num{color:var(--gold);}
+.step-title{font-size:15px;font-weight:400;color:rgba(255,255,255,.4);transition:all .4s;}
+.step.active .step-title{color:#fff;margin-bottom:8px;}
+.step-desc{font-size:13px;line-height:1.7;color:rgba(255,255,255,.4);font-weight:200;max-height:0;opacity:0;overflow:hidden;transition:all .5s cubic-bezier(.4,0,.2,1);}
+.step.active .step-desc{max-height:100px;opacity:1;}
+.bespoke-visual{width:100%;max-width:420px;aspect-ratio:3/4;background:linear-gradient(135deg,rgba(184,149,106,.1),rgba(139,69,19,.15));border:1px solid rgba(184,149,106,.15);display:flex;align-items:center;justify-content:center;position:relative;margin:0 auto;}
+.corner{position:absolute;width:20px;height:20px;}
+.corner.tl{top:12px;left:12px;border-top:1px solid rgba(184,149,106,.3);border-left:1px solid rgba(184,149,106,.3);}
+.corner.tr{top:12px;right:12px;border-top:1px solid rgba(184,149,106,.3);border-right:1px solid rgba(184,149,106,.3);}
+.corner.bl{bottom:12px;left:12px;border-bottom:1px solid rgba(184,149,106,.3);border-left:1px solid rgba(184,149,106,.3);}
+.corner.br{bottom:12px;right:12px;border-bottom:1px solid rgba(184,149,106,.3);border-right:1px solid rgba(184,149,106,.3);}
+.bespoke-cta{width:100%;max-width:420px;margin:20px auto 0;display:block;}
+
+/* ───── EDITORIAL ───── */
+.editorial-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.editorial-card{aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:flex-end;padding:48px;position:relative;overflow:hidden;}
+.editorial-card.light{background:linear-gradient(135deg,var(--cream),#E8DDD5);}
+.editorial-card.dark{background:linear-gradient(135deg,#1a1520,#2a1a2a,#1B1464);}
+.editorial-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-10deg);font-family:'Cormorant Garamond',serif;font-size:200px;color:rgba(184,149,106,.08);font-weight:300;white-space:nowrap;pointer-events:none;}
+.editorial-pattern{position:absolute;inset:0;background-image:repeating-linear-gradient(60deg,transparent,transparent 30px,rgba(184,149,106,.02) 30px,rgba(184,149,106,.02) 31px);pointer-events:none;}
+.editorial-inner{position:relative;z-index:2;}
+.editorial-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;font-weight:300;}
+.editorial-card.light .editorial-label{color:var(--warm);}
+.editorial-card.dark .editorial-label{color:var(--gold);}
+.editorial-heading{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:400;line-height:1.2;margin-bottom:20px;}
+.editorial-card.light .editorial-heading{color:var(--black);}
+.editorial-card.dark .editorial-heading{color:#fff;}
+.editorial-text{font-size:14px;line-height:1.7;font-weight:200;max-width:320px;}
+.editorial-card.light .editorial-text{color:var(--warm);}
+.editorial-link{display:inline-flex;align-items:center;gap:12px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-lt);font-weight:300;cursor:pointer;transition:gap .3s;}
+.editorial-link:hover{gap:18px;}
+
+/* ───── TESTIMONIALS ───── */
+.testimonials{padding:100px 48px;background:var(--white);text-align:center;}
+.testimonials-inner{max-width:700px;margin:0 auto;}
+.quote-mark{font-family:'Cormorant Garamond',serif;font-size:64px;color:var(--sand);line-height:1;margin-bottom:32px;}
+.testimonial-slide{position:relative;min-height:140px;}
+.testimonial{position:absolute;top:0;left:0;right:0;opacity:0;transform:translateY(20px);transition:all .8s cubic-bezier(.4,0,.2,1);}
+.testimonial:first-child{position:relative;}
+.testimonial.active{opacity:1;transform:translateY(0);}
+.testimonial p{font-family:'Cormorant Garamond',serif;font-size:24px;font-style:italic;color:var(--charcoal);line-height:1.6;font-weight:300;margin-bottom:32px;}
+.testimonial .author{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--warm);font-weight:400;}
+.testimonial .role{font-size:11px;color:var(--sand);font-weight:200;margin-top:4px;}
+.dots{display:flex;gap:8px;justify-content:center;margin-top:40px;}
+.dot{height:6px;border-radius:3px;cursor:pointer;transition:all .4s;background:var(--sand);}
+.dot.active{width:24px!important;background:var(--gold)!important;}
+
+/* ───── NEWSLETTER ───── */
+.newsletter{padding:80px 48px;background:linear-gradient(135deg,var(--cream) 0%,var(--ivory) 100%);border-top:1px solid rgba(196,181,164,.3);border-bottom:1px solid rgba(196,181,164,.3);}
+.newsletter-inner{max-width:600px;margin:0 auto;text-align:center;}
+.newsletter-title{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--black);font-weight:300;margin-bottom:12px;}
+.newsletter-desc{font-size:13px;color:var(--warm);font-weight:200;margin-bottom:32px;line-height:1.7;}
+.newsletter-form{display:flex;gap:0;}
+.newsletter-form input{flex:1;padding:14px 20px;border:1px solid var(--sand);border-right:none;font-family:'Outfit',sans-serif;font-size:13px;font-weight:200;outline:none;background:var(--white);color:var(--black);}
+.newsletter-form button{padding:14px 32px;background:var(--black);color:#fff;border:none;font-family:'Outfit',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-weight:300;transition:background .3s;}
+.newsletter-form button:hover{background:var(--charcoal);}
+
+/* ───── FOOTER ───── */
+footer{background:var(--black);padding:80px 48px 40px;color:#fff;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:48px;margin-bottom:64px;}
+.footer-brand .logo{font-size:22px;margin-bottom:8px;}
+.footer-brand .logo-sub{margin-bottom:20px;}
+.footer-brand p{font-size:13px;line-height:1.8;color:rgba(255,255,255,.4);font-weight:200;max-width:280px;}
+.footer-col-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-weight:400;}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.4);margin-bottom:10px;font-weight:200;transition:color .3s;}
+.footer-col a:hover{color:rgba(255,255,255,.8);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:32px;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.3);font-weight:200;letter-spacing:1px;}
+.footer-social{display:flex;gap:20px;}
+.footer-social a{font-size:11px;letter-spacing:1px;color:rgba(255,255,255,.3);font-weight:200;transition:color .3s;}
+.footer-social a:hover{color:var(--gold);}
+
+/* ───── SCROLL ANIMATIONS ───── */
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.4,0,.2,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ───── RESPONSIVE ───── */
+@media(max-width:1024px){
+  .hero h1{font-size:52px;}
+  .products-grid{grid-template-columns:repeat(2,1fr);}
+  .bespoke-grid{grid-template-columns:1fr;gap:48px;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px;}
+  .collections-grid{grid-template-columns:1fr;}
+  .editorial-grid{grid-template-columns:1fr;}
+  .nav-links,.nav-right-links{display:none;}
+}
+@media(max-width:640px){
+  .hero h1{font-size:38px;}
+  .section{padding:64px 24px;}
+  .products-grid{grid-template-columns:1fr 1fr;gap:16px;}
+  .hero-btns{flex-direction:column;width:100%;max-width:300px;}
+  .hero-btns button{width:100%;}
+  .nav-inner{padding:12px 20px;}
+  .products-header{flex-direction:column;align-items:flex-start;gap:24px;}
+  .filter-btns{flex-wrap:wrap;gap:12px;}
+  .footer-grid{grid-template-columns:1fr;}
+  .bespoke{padding:80px 24px;}
+  .bespoke-title{font-size:36px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ NAVBAR ═══════ -->
+<nav class="navbar" id="navbar">
+  <div class="topbar">Envío complimentario en pedidos superiores a €300 · Cada corbata es una pieza única</div>
+  <div class="nav-inner">
+    <div class="nav-links">
+      <a href="#">Colecciones</a><a href="#">Atelier</a><a href="#">Bespoke</a><a href="#">Novias</a>
+    </div>
+    <div class="logo-wrap">
+      <div class="logo">LUZ ORTIZ</div>
+      <div class="logo-sub">Corbatas de Autor · Madrid</div>
+    </div>
+    <div class="nav-right">
+      <div class="nav-right-links">
+        <a href="#">La Maison</a><a href="#">Journal</a><a href="#">Contacto</a>
+      </div>
+      <div class="nav-icons">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span style="position:relative">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-badge">2</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-orb1"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-content">
+    <div class="hero-label">Colección Primavera · Estate 2026</div>
+    <h1>El Arte de la<br><span>Corbata Única</span></h1>
+    <p>Cada pieza es irrepetible. Seda seleccionada a mano, patrones exclusivos y la maestría artesanal que define el verdadero lujo.</p>
+    <div class="hero-btns">
+      <button class="btn-gold">Descubrir Colección</button>
+      <button class="btn-outline">Diseña la Tuya</button>
+    </div>
+    <div class="scroll-ind">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ MARQUEE ═══════ -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>&nbsp;&nbsp;✦&nbsp;&nbsp;Seda 100% Italiana&nbsp;&nbsp;✦&nbsp;&nbsp;Confección Artesanal&nbsp;&nbsp;✦&nbsp;&nbsp;Piezas Únicas&nbsp;&nbsp;✦&nbsp;&nbsp;Envío Mundial&nbsp;&nbsp;✦&nbsp;&nbsp;Certificado de Autenticidad&nbsp;&nbsp;✦&nbsp;&nbsp;Hecho en España&nbsp;&nbsp;✦&nbsp;&nbsp;Personalización Total&nbsp;&nbsp;✦&nbsp;&nbsp;Sostenibilidad&nbsp;&nbsp;</span>
+    <span>&nbsp;&nbsp;✦&nbsp;&nbsp;Seda 100% Italiana&nbsp;&nbsp;✦&nbsp;&nbsp;Confección Artesanal&nbsp;&nbsp;✦&nbsp;&nbsp;Piezas Únicas&nbsp;&nbsp;✦&nbsp;&nbsp;Envío Mundial&nbsp;&nbsp;✦&nbsp;&nbsp;Certificado de Autenticidad&nbsp;&nbsp;✦&nbsp;&nbsp;Hecho en España&nbsp;&nbsp;✦&nbsp;&nbsp;Personalización Total&nbsp;&nbsp;✦&nbsp;&nbsp;Sostenibilidad&nbsp;&nbsp;</span>
+  </div>
+</div>
+
+<!-- ═══════ COLLECTIONS ═══════ -->
+<section class="section" style="background:var(--white)">
+  <div class="section-center" style="text-align:center">
+    <div class="section-label reveal">Explora</div>
+    <h2 class="section-title reveal">Nuestras <em>Colecciones</em></h2>
+    <div class="collections-grid">
+      <div class="col-card reveal" style="background:linear-gradient(135deg,#D4B896 0%,#F5F0EB 50%,#C4B5A4 100%)">
+        <div class="col-card-overlay"></div>
+        <div class="col-card-content">
+          <div class="col-count">24 piezas</div>
+          <div class="col-name">Primavera Estate 2026</div>
+          <div class="col-desc">La nueva temporada</div>
+          <div class="col-link">Explorar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></div>
+        </div>
+      </div>
+      <div class="col-card reveal" style="background:linear-gradient(135deg,#1B1464 0%,#2D1B69 50%,#4A0E2A 100%)">
+        <div class="col-card-overlay"></div>
+        <div class="col-card-content">
+          <div class="col-count">18 piezas</div>
+          <div class="col-name">Ceremonia</div>
+          <div class="col-desc">Para momentos únicos</div>
+          <div class="col-link">Explorar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></div>
+        </div>
+      </div>
+      <div class="col-card reveal" style="background:linear-gradient(135deg,#1A1A1A 0%,#2C2C2C 50%,#3A3A3A 100%)">
+        <div class="col-card-overlay"></div>
+        <div class="col-card-content">
+          <div class="col-count">32 piezas</div>
+          <div class="col-name">Business Elite</div>
+          <div class="col-desc">Poder silencioso</div>
+          <div class="col-link">Explorar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PRODUCTS ═══════ -->
+<section class="section" style="background:var(--ivory)">
+  <div class="section-wide">
+    <div class="products-header">
+      <div>
+        <div class="section-label reveal">Lo más nuevo</div>
+        <h2 class="section-title reveal">Piezas <em>Únicas</em></h2>
+      </div>
+      <div class="filter-btns">
+        <button class="filter-btn active">Todo</button>
+        <button class="filter-btn">Seda</button>
+        <button class="filter-btn">Jacquard</button>
+        <button class="filter-btn">Grenadine</button>
+        <button class="filter-btn">Ceremonia</button>
+      </div>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+    <div class="view-all-wrap">
+      <button class="btn-view-all">Ver Toda la Colección</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ BESPOKE ═══════ -->
+<section class="bespoke">
+  <div class="bespoke-bg"></div>
+  <div class="bespoke-grid">
+    <div>
+      <div class="bespoke-label reveal">Experiencia Bespoke</div>
+      <h2 class="bespoke-title reveal">Tu Corbata,<br><span>Tu Historia</span></h2>
+      <p class="bespoke-desc reveal">Desde la selección de la seda más exquisita hasta el último punto de costura, cada corbata bespoke es un viaje personal hacia la excelencia.</p>
+      <div id="stepsContainer">
+        <div class="step active" data-index="0">
+          <div class="step-row">
+            <span class="step-num">01</span>
+            <div>
+              <div class="step-title">Consulta</div>
+              <div class="step-desc">Agenda una cita privada en nuestro atelier de Madrid o virtualmente. Exploramos tu visión, estilo personal y la ocasión.</div>
+            </div>
+          </div>
+        </div>
+        <div class="step" data-index="1">
+          <div class="step-row">
+            <span class="step-num">02</span>
+            <div>
+              <div class="step-title">Diseño</div>
+              <div class="step-desc">Nuestros diseñadores crean bocetos exclusivos. Selecciona sedas, patrones y detalles de acabado.</div>
+            </div>
+          </div>
+        </div>
+        <div class="step" data-index="2">
+          <div class="step-row">
+            <span class="step-num">03</span>
+            <div>
+              <div class="step-title">Confección</div>
+              <div class="step-desc">Artesanos con más de 30 años de experiencia dan vida a tu diseño, cosiendo cada puntada a mano.</div>
+            </div>
+          </div>
+        </div>
+        <div class="step" data-index="3">
+          <div class="step-row">
+            <span class="step-num">04</span>
+            <div>
+              <div class="step-title">Entrega</div>
+              <div class="step-desc">Tu corbata única llega en un estuche de presentación, con certificado de autenticidad y monograma.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center">
+      <div class="bespoke-visual">
+        <svg width="120" height="320" viewBox="0 0 120 320" style="opacity:.3;animation:float 6s ease-in-out infinite">
+          <defs><linearGradient id="tieGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#B8956A" stop-opacity=".8"/><stop offset="100%" stop-color="#8B4513" stop-opacity=".4"/></linearGradient></defs>
+          <path d="M48 0 L72 0 L76 24 L80 50 L70 150 L78 290 L60 320 L42 290 L50 150 L40 50 L44 24 Z" fill="url(#tieGrad)" stroke="#B8956A" stroke-width=".5"/>
+          <path d="M44 24 L76 24 L80 50 L40 50 Z" fill="rgba(184,149,106,.2)"/>
+          <line x1="60" y1="60" x2="60" y2="280" stroke="#B8956A" stroke-width=".3" stroke-dasharray="4,8"/>
+        </svg>
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      </div>
+      <button class="btn-gold bespoke-cta">Solicitar Cita Privada</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ EDITORIAL ═══════ -->
+<section class="section" style="background:var(--ivory)">
+  <div class="section-center">
+    <div class="editorial-grid">
+      <div class="editorial-card light reveal">
+        <div class="editorial-watermark">LO</div>
+        <div class="editorial-inner">
+          <div class="editorial-label">Edición Limitada</div>
+          <div class="editorial-heading">La Colección<br><em>Nocturnos</em></div>
+          <p class="editorial-text">Inspirada en la profundidad de las noches madrileñas. Solo 12 piezas, cada una numerada y firmada.</p>
+        </div>
+      </div>
+      <div class="editorial-card dark reveal">
+        <div class="editorial-pattern"></div>
+        <div class="editorial-inner">
+          <div class="editorial-label">Journal</div>
+          <div class="editorial-heading">El Renacimiento<br><em>de la Corbata</em></div>
+          <a class="editorial-link" href="#">Leer en Porter <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ TESTIMONIALS ═══════ -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <div class="quote-mark">"</div>
+    <div class="testimonial-slide" id="testimonialSlide">
+      <div class="testimonial active">
+        <p>Nunca pensé que una corbata pudiera contar una historia. La mía cuenta la de mi familia.</p>
+        <div class="author">Alejandro R.</div>
+        <div class="role">Madrid</div>
+      </div>
+      <div class="testimonial">
+        <p>La atención al detalle es extraordinaria. Cada vez que la uso, alguien me pregunta dónde la compré.</p>
+        <div class="author">Carlos M.</div>
+        <div class="role">Barcelona</div>
+      </div>
+      <div class="testimonial">
+        <p>Mi corbata de boda fue una obra de arte. Luz entendió exactamente lo que quería sin que pudiera expresarlo.</p>
+        <div class="author">Diego F.</div>
+        <div class="role">México DF</div>
+      </div>
+    </div>
+    <div class="dots" id="dots"></div>
+  </div>
+</section>
+
+<!-- ═══════ NEWSLETTER ═══════ -->
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <div class="section-label">Newsletter</div>
+    <h3 class="newsletter-title">Recibe novedades <em>exclusivas</em></h3>
+    <p class="newsletter-desc">Acceso anticipado a nuevas colecciones, invitaciones a eventos privados y contenido editorial sobre el arte de la sastrería.</p>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Tu email">
+      <button>Suscribirse</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">LUZ ORTIZ</div>
+        <div class="logo-sub">Corbatas de Autor</div>
+        <p>Cada corbata es una declaración de identidad. Diseñadas en Madrid, confeccionadas con los materiales más nobles del mundo.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Colecciones</div>
+        <a href="#">Primavera/Verano</a><a href="#">Otoño/Invierno</a><a href="#">Ceremonia</a><a href="#">Business Elite</a><a href="#">Ediciones Limitadas</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Servicios</div>
+        <a href="#">Bespoke</a><a href="#">Personal Shopper</a><a href="#">Gift Cards</a><a href="#">Monograma</a><a href="#">Corporate</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">La Maison</div>
+        <a href="#">Nuestra Historia</a><a href="#">Artesanos</a><a href="#">Sostenibilidad</a><a href="#">Prensa</a><a href="#">Carreras</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Atención</div>
+        <a href="#">Contacto</a><a href="#">FAQ</a><a href="#">Envíos</a><a href="#">Devoluciones</a><a href="#">Cuidado de la Seda</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Luz Ortiz · Corbatas de Autor. Todos los derechos reservados.</div>
+      <div class="footer-social">
+        <a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ───── PRODUCTS ─────
+const products = [
+  {id:1,name:"Midnight Byzantium",price:385,fabric:"Seda Italiana Jacquard",tag:"NUEVA COLECCIÓN",img:"linear-gradient(135deg,#1B1464,#2D1B69,#0D0D3B)"},
+  {id:2,name:"Toscana Dorada",price:420,fabric:"Seda Dupioni Toscana",tag:"EXCLUSIVA",img:"linear-gradient(135deg,#8B6914,#B8956A,#6B4F12)"},
+  {id:3,name:"Rosa Damasco",price:395,fabric:"Seda Charmeuse",tag:"EDICIÓN ÚNICA",img:"linear-gradient(135deg,#8B2252,#C44D7B,#6B1A3E)"},
+  {id:4,name:"Bosque Imperial",price:410,fabric:"Seda Shantung",tag:"BESPOKE",img:"linear-gradient(135deg,#1B4D2E,#2D7A4A,#0E3B1E)"},
+  {id:5,name:"Borgoña Reale",price:450,fabric:"Seda Crêpe de Chine",tag:"ATELIER",img:"linear-gradient(135deg,#4A0E2A,#7A1E48,#380A20)"},
+  {id:6,name:"Azul Capri",price:375,fabric:"Seda Twill Francesa",tag:"NUEVA COLECCIÓN",img:"linear-gradient(135deg,#003B6F,#1A5F9E,#002244)"},
+  {id:7,name:"Terracotta Firenze",price:430,fabric:"Seda Grenadine",tag:"LIMITADA",img:"linear-gradient(135deg,#8B4513,#A0522D,#6B3410)"},
+  {id:8,name:"Plata Lunar",price:465,fabric:"Seda Mikado Plateada",tag:"HAUTE COUTURE",img:"linear-gradient(135deg,#4A4A5A,#6A6A7A,#3A3A4A)"}
+];
+
+const grid = document.getElementById('productsGrid');
+products.forEach((p, i) => {
+  const card = document.createElement('div');
+  card.className = 'product-card';
+  card.style.animationDelay = (i * 0.1) + 's';
+  card.innerHTML = `
+    <div class="product-img" style="background:${p.img}">
+      <div class="tie-icon">
+        <svg width="60" height="200" viewBox="0 0 60 200">
+          <path d="M25 0 L35 0 L38 15 L40 30 L35 90 L38 180 L30 200 L22 180 L25 90 L20 30 L22 15 Z" fill="rgba(255,255,255,.3)" stroke="rgba(255,255,255,.2)" stroke-width=".5"/>
+          <path d="M22 15 L38 15 L40 30 L20 30 Z" fill="rgba(255,255,255,.15)"/>
+        </svg>
+      </div>
+      <div class="product-tag">${p.tag}</div>
+      <div class="product-actions">
+        <button class="btn-add">Añadir</button>
+        <button class="btn-fav"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+      </div>
+    </div>
+    <div class="product-fabric">${p.fabric}</div>
+    <div class="product-name">${p.name}</div>
+    <div class="product-price">€${p.price}</div>
+  `;
+  grid.appendChild(card);
+});
+
+// ───── FILTER BUTTONS ─────
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+// ───── BESPOKE STEPS ─────
+document.querySelectorAll('.step').forEach(step => {
+  step.addEventListener('click', () => {
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    step.classList.add('active');
+  });
+});
+
+// ───── NAVBAR SCROLL ─────
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// ───── TESTIMONIALS ─────
+const testimonials = document.querySelectorAll('.testimonial');
+const dotsContainer = document.getElementById('dots');
+let activeTest = 0;
+
+testimonials.forEach((_, i) => {
+  const dot = document.createElement('div');
+  dot.className = 'dot' + (i === 0 ? ' active' : '');
+  dot.style.width = i === 0 ? '24px' : '6px';
+  dot.addEventListener('click', () => setTestimonial(i));
+  dotsContainer.appendChild(dot);
+});
+
+function setTestimonial(idx) {
+  activeTest = idx;
+  testimonials.forEach((t, i) => t.classList.toggle('active', i === idx));
+  dotsContainer.querySelectorAll('.dot').forEach((d, i) => {
+    d.classList.toggle('active', i === idx);
+    d.style.width = i === idx ? '24px' : '6px';
+  });
+}
+
+setInterval(() => setTestimonial((activeTest + 1) % testimonials.length), 5000);
+
+// ───── SCROLL REVEAL ─────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ───── PRODUCT CARD ANIMATIONS ─────
+const prodObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; prodObserver.unobserve(e.target); }});
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.product-card').forEach(el => prodObserver.observe(el));
+</script>
+</body>
+</html>
