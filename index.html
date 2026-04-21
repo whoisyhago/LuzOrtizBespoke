@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUZ ORTIZ · Corbatas de Autor</title>
+<title>ZuLuZ x Luz Ortiz · Corbatas de Autor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -41,10 +41,8 @@ input{outline:none;font-family:'Outfit',sans-serif}
 .nav.scrolled .nav-link{color:var(--black)}
 .nav-link:hover{border-bottom-color:currentColor}
 .nav-logo{text-align:center;flex:1}
-.nav-logo h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:28px;letter-spacing:8px;text-transform:uppercase;color:#fff;transition:color .5s}
-.nav.scrolled .nav-logo h1{color:var(--black)}
-.nav-logo span{font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:2px;display:block;font-weight:200;transition:color .5s}
-.nav.scrolled .nav-logo span{color:var(--warm)}
+.nav-logo-img{height:50px;transition:all .5s;filter:invert(1) brightness(2)}
+.nav.scrolled .nav-logo-img{filter:none;height:45px}
 .nav-right{display:flex;gap:28px;align-items:center;flex:1;justify-content:flex-end}
 .nav-icons{display:flex;gap:16px;margin-left:8px;align-items:center}
 .nav-icons svg{stroke:#fff;transition:stroke .5s;cursor:pointer}
@@ -294,7 +292,7 @@ input{outline:none;font-family:'Outfit',sans-serif}
 
 <!-- ═══════════ NAVIGATION ═══════════ -->
 <nav class="nav" id="navbar">
-  <div class="nav-ribbon">Cada pieza es única · Hechas a mano en Madrid · Envío complimentario +€150</div>
+  <div class="nav-ribbon">Cada pieza es única · Hechas a mano en Madrid · Envío complimentario en todos los pedidos</div>
   <div class="nav-main">
     <div class="nav-links">
       <a href="#colecciones" class="nav-link">Colecciones</a>
@@ -303,8 +301,7 @@ input{outline:none;font-family:'Outfit',sans-serif}
       <a href="#about" class="nav-link">Sobre Mí</a>
     </div>
     <div class="nav-logo">
-      <h1>Luz Ortiz</h1>
-      <span>Corbatas de Autor · Madrid</span>
+      <a href="#"><img src="logo-zuluz.png" alt="ZuLuZ x Luz Ortiz" class="nav-logo-img"></a>
     </div>
     <div class="nav-right">
       <a href="#" class="nav-link">Atelier</a>
@@ -334,6 +331,7 @@ input{outline:none;font-family:'Outfit',sans-serif}
   </div>
   <div class="hero-content">
     <div class="hero-tag">Power Dressing · Redefinido</div>
+    <img src="logo-zuluz.png" alt="ZuLuZ x Luz Ortiz" style="height:70px;filter:invert(1) brightness(2);margin-bottom:24px;animation:fadeIn 1s ease-out .15s both">
     <h2>Corbatas Vintage<br><em>Una Nueva Vida</em></h2>
     <p class="hero-desc">Piezas únicas hechas a mano en Madrid. Cada corbata vintage es intervenida con bisutería, plumas, cuarzos y joyas para crear una obra irrepetible que te empodera.</p>
     <div class="hero-btns">
@@ -433,7 +431,7 @@ input{outline:none;font-family:'Outfit',sans-serif}
     <div class="bio-text">
       <div class="sec-tag reveal">La Creadora</div>
       <h2 class="bio-name reveal">Luz <em>Ortiz</em></h2>
-      <div class="bio-role reveal">Fundadora &amp; Diseñadora · Luz Ortiz Atelier</div>
+      <div class="bio-role reveal">Fundadora &amp; Diseñadora · ZuLuZ Atelier</div>
       <p class="bio-p reveal">
         Mexicana, española, texicana. Madre de cinco, emprendedora y apasionada de la moda con propósito. 
         Luz comenzó su camino en el diseño interviniendo prendas de su propio armario: <strong>dos blusas olvidadas se convirtieron en una pieza completamente nueva</strong>, y ahí nació todo.
@@ -446,7 +444,7 @@ input{outline:none;font-family:'Outfit',sans-serif}
       </div>
       <p class="bio-p reveal">
         Un viaje a Tanzania, donde vio montañas de ropa desechada, selló su compromiso con la <strong>sostenibilidad</strong>. 
-        Cada corbata de Luz Ortiz es una declaración: se puede ser elegante, única y consciente a la vez. 
+        Cada corbata de ZuLuZ es una declaración: se puede ser elegante, única y consciente a la vez. 
         El epítome del <strong>power dressing</strong> sin perder la feminidad.
       </p>
       <a href="https://www.instagram.com/luzortizbxbt/" target="_blank" rel="noopener noreferrer" class="bio-ig reveal">
@@ -568,9 +566,9 @@ input{outline:none;font-family:'Outfit',sans-serif}
 <footer class="ft">
   <div class="ft-grid">
     <div>
-      <div class="ft-logo">Luz Ortiz</div>
-      <div class="ft-sub">Corbatas de Autor</div>
-      <p class="ft-txt">Cada corbata es una declaración de identidad. Piezas vintage intervenidas a mano en Madrid con bisutería, plumas, cuarzos y joyas.</p>
+      <div class="ft-logo-wrap"><img src="logo-zuluz.png" alt="ZuLuZ x Luz Ortiz" style="height:40px;margin-bottom:16px;filter:invert(1) brightness(2)"></div>
+      <div class="ft-sub">Corbatas de Autor · Madrid</div>
+      <p class="ft-txt">Cada corbata es una declaración de identidad. Piezas vintage intervenidas a mano en nuestro atelier de Madrid con bisutería, plumas, cuarzos y joyas.</p>
       <a href="https://www.instagram.com/luzortizbxbt/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;margin-top:20px;color:rgba(255,255,255,.5);font-size:12px;transition:color .3s" onmouseover="this.style.color='#B8956A'" onmouseout="this.style.color='rgba(255,255,255,.5)'">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
         @luzortizbxbt
@@ -585,7 +583,7 @@ input{outline:none;font-family:'Outfit',sans-serif}
       <a href="#">Bespoke</a><a href="#">Corbata Memorial</a><a href="#">Gift Cards</a><a href="#">Personal Styling</a><a href="#">Corporate</a>
     </div>
     <div class="ft-col">
-      <div class="ft-col-t">Luz Ortiz</div>
+      <div class="ft-col-t">ZuLuZ</div>
       <a href="#">Nuestra Historia</a><a href="#">Sostenibilidad</a><a href="#">Prensa</a><a href="#">Atelier Madrid</a>
     </div>
     <div class="ft-col">
@@ -594,7 +592,7 @@ input{outline:none;font-family:'Outfit',sans-serif}
     </div>
   </div>
   <div class="ft-bot">
-    <div class="ft-copy">© 2026 Luz Ortiz · Corbatas de Autor. Todas las piezas son únicas y hechas a mano en Madrid.</div>
+    <div class="ft-copy">© 2026 ZuLuZ x Luz Ortiz · Corbatas de Autor. Todas las piezas son únicas y hechas a mano en Madrid.</div>
     <div class="ft-soc">
       <a href="https://www.instagram.com/luzortizbxbt/" target="_blank">Instagram</a>
       <a href="#">Pinterest</a>
@@ -606,14 +604,14 @@ input{outline:none;font-family:'Outfit',sans-serif}
 <!-- ═══════════ JAVASCRIPT ═══════════ -->
 <script>
 var products=[
-{id:1,name:"Midnight Paisley",price:95,fabric:"Seda Vintage · Bisutería",tag:"CLÁSICA",img:"linear-gradient(135deg,#1B1464,#2D1B69,#0D0D3B)"},
-{id:2,name:"Toscana Dorada",price:150,fabric:"Seda Dupioni · Pluma Natural",tag:"PLUMAS",img:"linear-gradient(135deg,#8B6914,#B8956A,#6B4F12)"},
-{id:3,name:"Rosa Quarzo",price:120,fabric:"Seda Charmeuse · Cuarzo Rosa",tag:"CUARZOS",img:"linear-gradient(135deg,#8B2252,#C44D7B,#6B1A3E)"},
-{id:4,name:"Bosque Imperial",price:85,fabric:"Seda Shantung · Vintage",tag:"CLÁSICA",img:"linear-gradient(135deg,#1B4D2E,#2D7A4A,#0E3B1E)"},
-{id:5,name:"Borgoña Reale",price:450,fabric:"Seda Crêpe · Joya Vintage",tag:"JOYA",img:"linear-gradient(135deg,#4A0E2A,#7A1E48,#380A20)"},
-{id:6,name:"Azul Capri",price:75,fabric:"Seda Twill · Bisutería",tag:"CLÁSICA",img:"linear-gradient(135deg,#003B6F,#1A5F9E,#002244)"},
-{id:7,name:"Terracotta Firenze",price:120,fabric:"Seda Grenadine · Pluma",tag:"PLUMAS",img:"linear-gradient(135deg,#8B4513,#A0522D,#6B3410)"},
-{id:8,name:"Plata Lunar",price:380,fabric:"Seda Mikado · Piedra Lunar",tag:"JOYA",img:"linear-gradient(135deg,#4A4A5A,#6A6A7A,#3A3A4A)"}
+{id:1,name:"Midnight Paisley",price:320,fabric:"Seda Vintage · Bisutería",tag:"CLÁSICA",img:"linear-gradient(135deg,#1B1464,#2D1B69,#0D0D3B)"},
+{id:2,name:"Toscana Dorada",price:385,fabric:"Seda Dupioni · Pluma Natural",tag:"PLUMAS",img:"linear-gradient(135deg,#8B6914,#B8956A,#6B4F12)"},
+{id:3,name:"Rosa Quarzo",price:360,fabric:"Seda Charmeuse · Cuarzo Rosa",tag:"CUARZOS",img:"linear-gradient(135deg,#8B2252,#C44D7B,#6B1A3E)"},
+{id:4,name:"Bosque Imperial",price:300,fabric:"Seda Shantung · Vintage",tag:"CLÁSICA",img:"linear-gradient(135deg,#1B4D2E,#2D7A4A,#0E3B1E)"},
+{id:5,name:"Borgoña Reale",price:680,fabric:"Seda Crêpe · Joya Vintage",tag:"JOYA",img:"linear-gradient(135deg,#4A0E2A,#7A1E48,#380A20)"},
+{id:6,name:"Azul Capri",price:310,fabric:"Seda Twill · Bisutería",tag:"CLÁSICA",img:"linear-gradient(135deg,#003B6F,#1A5F9E,#002244)"},
+{id:7,name:"Terracotta Firenze",price:375,fabric:"Seda Grenadine · Pluma",tag:"PLUMAS",img:"linear-gradient(135deg,#8B4513,#A0522D,#6B3410)"},
+{id:8,name:"Plata Lunar",price:720,fabric:"Seda Mikado · Piedra Lunar",tag:"JOYA",img:"linear-gradient(135deg,#4A4A5A,#6A6A7A,#3A3A4A)"}
 ];
 
 var testimonials=[
