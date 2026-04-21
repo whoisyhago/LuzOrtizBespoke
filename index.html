@@ -4,269 +4,341 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LUZ ORTIZ · Corbatas de Autor</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{overflow-x:hidden;background:#FAF8F5;font-family:'Outfit',sans-serif;}
-a{text-decoration:none;color:inherit;}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{overflow-x:hidden;font-family:'Outfit',sans-serif;background:#FAF8F5;color:#0A0A0A}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;outline:none;font-family:'Outfit',sans-serif}
+input{outline:none;font-family:'Outfit',sans-serif}
 
 :root{
---black:#0A0A0A;--dk:#1A1A1A;--charcoal:#2C2C2C;--warm:#8A8178;
---sand:#C4B5A4;--cream:#F5F0EB;--ivory:#FAF8F5;--white:#FFFFFF;
+--black:#0A0A0A;--dk:#1A1A1A;--char:#2C2C2C;
+--warm:#8A8178;--sand:#C4B5A4;--cream:#F5F0EB;
+--ivory:#FAF8F5;--white:#FFFFFF;
 --gold:#B8956A;--gold-lt:#D4B896;--accent:#8B4513;
+--burdeos:#6B1A3E;
 }
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-@keyframes float{0%,100%{transform:translateY(0) rotate(-10deg)}50%{transform:translateY(-12px) rotate(-8deg)}}
+@keyframes float{0%,100%{transform:translate(-50%,-50%) rotate(-10deg)}50%{transform:translate(-50%,-55%) rotate(-8deg)}}
+@keyframes breathe{0%,100%{opacity:.2}50%{opacity:.35}}
 
-/* ───── NAVBAR ───── */
-.topbar{background:var(--black);color:var(--cream);font-size:11px;letter-spacing:2.5px;text-align:center;padding:8px 20px;font-weight:300;text-transform:uppercase;}
-.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all .5s cubic-bezier(.4,0,.2,1);}
-.navbar.scrolled{background:rgba(250,248,245,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(196,181,164,.3);}
-.navbar.scrolled .topbar{display:none;}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;max-width:1400px;margin:0 auto;}
-.nav-links{display:flex;gap:32px;align-items:center;flex:1;}
-.nav-links a,.nav-right-links a{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#fff;font-weight:300;transition:all .3s;border-bottom:1px solid transparent;padding-bottom:2px;}
-.nav-links a:hover,.nav-right-links a:hover{border-bottom-color:currentColor;}
-.navbar.scrolled .nav-links a,.navbar.scrolled .nav-right-links a{color:var(--black);}
-.logo-wrap{text-align:center;flex:1;}
-.logo{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:28px;letter-spacing:8px;text-transform:uppercase;color:#fff;transition:color .5s;}
-.logo-sub{font-weight:200;font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:2px;transition:color .5s;}
-.navbar.scrolled .logo{color:var(--black);}
-.navbar.scrolled .logo-sub{color:var(--warm);}
-.nav-right{display:flex;gap:28px;align-items:center;flex:1;justify-content:flex-end;}
-.nav-right-links{display:flex;gap:28px;}
-.nav-icons{display:flex;gap:16px;margin-left:8px;align-items:center;}
-.nav-icons svg{cursor:pointer;transition:stroke .3s;}
-.navbar.scrolled .nav-icons svg{stroke:var(--black);}
-.cart-badge{position:absolute;top:-6px;right:-8px;background:var(--gold);color:#fff;font-size:9px;font-weight:500;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+/* ════════════════════════════════════
+   NAVIGATION
+   ════════════════════════════════════ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all .5s cubic-bezier(.4,0,.2,1)}
+.nav.scrolled{background:rgba(250,248,245,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(196,181,164,.3)}
+.nav-ribbon{background:var(--black);color:var(--cream);font-size:11px;letter-spacing:2.5px;text-align:center;padding:8px 20px;font-weight:300;text-transform:uppercase}
+.nav-main{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;max-width:1400px;margin:0 auto}
+.nav-links{display:flex;gap:32px;align-items:center;flex:1}
+.nav-link{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#fff;font-weight:300;transition:all .3s;border-bottom:1px solid transparent;padding-bottom:2px}
+.nav.scrolled .nav-link{color:var(--black)}
+.nav-link:hover{border-bottom-color:currentColor}
+.nav-logo{text-align:center;flex:1}
+.nav-logo h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:28px;letter-spacing:8px;text-transform:uppercase;color:#fff;transition:color .5s}
+.nav.scrolled .nav-logo h1{color:var(--black)}
+.nav-logo span{font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:2px;display:block;font-weight:200;transition:color .5s}
+.nav.scrolled .nav-logo span{color:var(--warm)}
+.nav-right{display:flex;gap:28px;align-items:center;flex:1;justify-content:flex-end}
+.nav-icons{display:flex;gap:16px;margin-left:8px;align-items:center}
+.nav-icons svg{stroke:#fff;transition:stroke .5s;cursor:pointer}
+.nav.scrolled .nav-icons svg{stroke:var(--black)}
+.cart-badge{position:absolute;top:-6px;right:-8px;background:var(--gold);color:#fff;font-size:9px;font-weight:500;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center}
 
-/* ───── HERO ───── */
-.hero{height:100vh;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--black) 0%,#1a1520 30%,#2a1a2a 60%,var(--dk) 100%);}
-.hero-pattern{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(184,149,106,.03) 40px,rgba(184,149,106,.03) 41px),repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(184,149,106,.03) 40px,rgba(184,149,106,.03) 41px);}
-.hero-orb1{position:absolute;top:10%;right:15%;width:500px;height:500px;background:radial-gradient(circle,rgba(139,69,19,.15) 0%,transparent 70%);border-radius:50%;filter:blur(60px);}
-.hero-orb2{position:absolute;bottom:10%;left:10%;width:400px;height:400px;background:radial-gradient(circle,rgba(184,149,106,.1) 0%,transparent 70%);border-radius:50%;filter:blur(80px);}
-.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 48px;}
-.hero-label{font-size:11px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:32px;font-weight:300;animation:fadeIn 1.2s ease-out;}
-.hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:82px;line-height:1.05;color:#fff;max-width:900px;margin-bottom:24px;animation:fadeUp 1s ease-out .3s both;}
-.hero h1 span{font-style:italic;color:var(--gold-lt);}
-.hero p{font-weight:200;font-size:16px;line-height:1.8;color:rgba(255,255,255,.6);max-width:520px;margin-bottom:48px;animation:fadeUp 1s ease-out .6s both;}
-.hero-btns{display:flex;gap:20px;animation:fadeUp 1s ease-out .9s both;}
-.btn-gold{font-size:12px;letter-spacing:3px;text-transform:uppercase;padding:16px 48px;background:var(--gold);color:#fff;border:none;cursor:pointer;font-weight:400;font-family:'Outfit',sans-serif;transition:all .4s;}
-.btn-gold:hover{background:var(--gold-lt);transform:translateY(-2px);}
-.btn-outline{font-size:12px;letter-spacing:3px;text-transform:uppercase;padding:16px 48px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);cursor:pointer;font-weight:300;font-family:'Outfit',sans-serif;transition:all .4s;}
-.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
-.scroll-ind{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;animation:fadeIn 1.5s ease-out 1.5s both;}
-.scroll-ind span{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.3);}
-.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(184,149,106,.6),transparent);animation:pulse 2s ease-in-out infinite;}
+/* ════════════════════════════════════
+   HERO
+   ════════════════════════════════════ */
+.hero{height:100vh;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--black) 0%,#1a1520 30%,#2a1a2a 60%,var(--dk) 100%)}
+.hero-pattern{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(184,149,106,.03) 40px,rgba(184,149,106,.03) 41px),repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(184,149,106,.03) 40px,rgba(184,149,106,.03) 41px)}
+.hero-orb1{position:absolute;top:10%;right:15%;width:500px;height:500px;background:radial-gradient(circle,rgba(107,26,62,.2) 0%,transparent 70%);border-radius:50%;filter:blur(60px)}
+.hero-orb2{position:absolute;bottom:10%;left:10%;width:400px;height:400px;background:radial-gradient(circle,rgba(184,149,106,.1) 0%,transparent 70%);border-radius:50%;filter:blur(80px)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;padding:0 48px;max-width:660px}
+.hero-photo{position:absolute;right:0;top:0;width:45%;height:100%;z-index:1;overflow:hidden}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;animation:fadeIn 1.5s ease-out .5s both}
+.hero-photo-overlay{position:absolute;inset:0;background:linear-gradient(to right,var(--black) 0%,rgba(10,10,10,.5) 30%,rgba(10,10,10,.05) 100%)}
+.hero-tag{font-size:11px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:32px;font-weight:300;animation:fadeIn 1.2s ease-out}
+.hero h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:80px;line-height:1.05;color:#fff;max-width:900px;margin-bottom:24px;animation:fadeUp 1s ease-out .3s both}
+.hero h2 em{font-style:italic;color:var(--gold-lt)}
+.hero-desc{font-weight:200;font-size:16px;line-height:1.8;color:rgba(255,255,255,.6);max-width:540px;margin-bottom:48px;animation:fadeUp 1s ease-out .6s both}
+.hero-btns{display:flex;gap:20px;animation:fadeUp 1s ease-out .9s both}
+.btn-gold{font-size:12px;letter-spacing:3px;text-transform:uppercase;padding:16px 48px;background:var(--gold);color:#fff;border:none;font-weight:400;transition:all .4s}
+.btn-gold:hover{background:var(--gold-lt);transform:translateY(-2px)}
+.btn-out-w{font-size:12px;letter-spacing:3px;text-transform:uppercase;padding:16px 48px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);font-weight:300;transition:all .4s}
+.btn-out-w:hover{border-color:var(--gold);color:var(--gold)}
+.scroll-ind{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;animation:fadeIn 1.5s ease-out 1.5s both}
+.scroll-ind span{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(184,149,106,.6),transparent);animation:pulse 2s ease-in-out infinite}
 
-/* ───── MARQUEE ───── */
-.marquee-strip{background:var(--ivory);border-top:1px solid var(--cream);border-bottom:1px solid var(--cream);padding:14px 0;overflow:hidden;}
-.marquee-track{display:flex;animation:marquee 30s linear infinite;white-space:nowrap;}
-.marquee-track span{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--warm);font-weight:300;}
+/* ════════════════════════════════════
+   MARQUEE
+   ════════════════════════════════════ */
+.marquee{background:var(--ivory);border-top:1px solid var(--cream);border-bottom:1px solid var(--cream);padding:14px 0;overflow:hidden}
+.marquee-track{display:flex;animation:marquee 30s linear infinite;white-space:nowrap;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--warm);font-weight:300}
 
-/* ───── SECTIONS ───── */
-.section{padding:100px 48px;}
-.section-center{max-width:1200px;margin:0 auto;}
-.section-wide{max-width:1300px;margin:0 auto;}
-.section-label{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-weight:300;}
-.section-title{font-family:'Cormorant Garamond',serif;font-size:44px;color:var(--black);font-weight:300;}
-.section-title em{font-style:italic;}
+/* ════════════════════════════════════
+   GENERIC
+   ════════════════════════════════════ */
+.sec{padding:100px 48px}
+.sec-tag{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-weight:300}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:44px;color:var(--black);font-weight:300}
+.sec-title em{font-style:italic}
+.inner{max-width:1200px;margin:0 auto}
+.inner-w{max-width:1300px;margin:0 auto}
+.reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.4,0,.2,1)}
+.reveal.vis{opacity:1;transform:translateY(0)}
+.arrow-svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5}
 
-/* ───── COLLECTIONS ───── */
-.collections-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px;}
-.col-card{position:relative;overflow:hidden;cursor:pointer;height:460px;}
-.col-card-overlay{position:absolute;inset:0;background:rgba(0,0,0,.35);transition:background .5s;}
-.col-card:hover .col-card-overlay{background:rgba(0,0,0,.2);}
-.col-card-content{position:absolute;bottom:40px;left:40px;right:40px;z-index:2;}
-.col-count{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:12px;font-weight:300;}
-.col-name{font-family:'Cormorant Garamond',serif;font-size:32px;color:#fff;font-weight:300;margin-bottom:8px;}
-.col-desc{font-size:13px;color:rgba(255,255,255,.7);font-weight:200;margin-bottom:24px;}
-.col-link{display:inline-flex;align-items:center;gap:12px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#fff;font-weight:300;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:4px;transition:transform .4s;}
-.col-card:hover .col-link{transform:translateX(8px);}
+/* ════════════════════════════════════
+   COLLECTIONS
+   ════════════════════════════════════ */
+.coll-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.coll{position:relative;overflow:hidden;cursor:pointer;height:460px}
+.coll .ov{position:absolute;inset:0;background:rgba(0,0,0,.35);transition:background .5s}
+.coll:hover .ov{background:rgba(0,0,0,.2)}
+.coll-info{position:absolute;bottom:40px;left:40px;right:40px;z-index:2}
+.coll-cnt{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:12px;font-weight:300}
+.coll-name{font-family:'Cormorant Garamond',serif;font-size:32px;color:#fff;font-weight:300;margin-bottom:8px}
+.coll-desc{font-size:13px;color:rgba(255,255,255,.7);font-weight:200;margin-bottom:24px}
+.coll-lnk{display:inline-flex;align-items:center;gap:12px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#fff;font-weight:300;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:4px;transition:transform .4s}
+.coll:hover .coll-lnk{transform:translateX(8px)}
 
-/* ───── PRODUCTS ───── */
-.products-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px;}
-.filter-btns{display:flex;gap:24px;}
-.filter-btn{font-size:11px;letter-spacing:2px;text-transform:uppercase;background:none;border:none;color:var(--warm);cursor:pointer;font-weight:200;border-bottom:1px solid transparent;padding-bottom:4px;transition:all .3s;font-family:'Outfit',sans-serif;}
-.filter-btn.active{color:var(--black);font-weight:400;border-bottom-color:var(--black);}
-.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;}
-.product-card{cursor:pointer;opacity:0;animation:fadeUp .7s ease-out forwards;}
-.product-img{position:relative;aspect-ratio:3/4;overflow:hidden;margin-bottom:16px;transition:transform .6s cubic-bezier(.4,0,.2,1);}
-.product-card:hover .product-img{transform:scale(1.02);}
-.tie-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.2;transition:all .6s;}
-.product-card:hover .tie-icon{opacity:.4;transform:rotate(5deg) scale(1.1);}
-.product-tag{position:absolute;top:16px;left:16px;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.4);backdrop-filter:blur(10px);padding:6px 14px;font-weight:400;}
-.product-actions{position:absolute;bottom:0;left:0;right:0;padding:16px;display:flex;gap:8px;transform:translateY(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);}
-.product-card:hover .product-actions{transform:translateY(0);}
-.btn-add{flex:1;padding:12px 0;font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;border:none;background:rgba(255,255,255,.95);color:var(--black);cursor:pointer;font-weight:400;}
-.btn-fav{padding:12px 14px;border:none;background:rgba(255,255,255,.95);cursor:pointer;display:flex;align-items:center;}
-.product-fabric{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--warm);margin-bottom:6px;font-weight:300;}
-.product-name{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--black);margin-bottom:6px;font-weight:400;}
-.product-price{font-size:14px;color:var(--charcoal);font-weight:300;}
-.view-all-wrap{text-align:center;margin-top:64px;}
-.btn-view-all{font-size:12px;letter-spacing:3px;text-transform:uppercase;padding:16px 56px;background:transparent;color:var(--black);border:1px solid var(--sand);cursor:pointer;font-weight:300;font-family:'Outfit',sans-serif;transition:all .4s;}
-.btn-view-all:hover{background:var(--black);color:#fff;border-color:var(--black);}
+/* ════════════════════════════════════
+   PRODUCTS
+   ════════════════════════════════════ */
+.prod-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px}
+.fbar{display:flex;gap:24px}
+.fbtn{font-size:11px;letter-spacing:2px;text-transform:uppercase;background:none;border:none;color:var(--warm);font-weight:200;border-bottom:1px solid transparent;padding-bottom:4px;transition:all .3s}
+.fbtn.on{color:var(--black);font-weight:400;border-bottom-color:var(--black)}
+.fbtn:hover{color:var(--black)}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.pc{cursor:pointer;opacity:0;animation:fadeUp .7s ease-out forwards}
+.pimg{position:relative;aspect-ratio:3/4;overflow:hidden;margin-bottom:16px;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.pc:hover .pimg{transform:scale(1.02)}
+.ptag{position:absolute;top:16px;left:16px;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.4);backdrop-filter:blur(10px);padding:6px 14px;font-weight:400;z-index:2}
+.tsvg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.tsvg svg{opacity:.2;transition:all .6s}
+.pc:hover .tsvg svg{opacity:.4;transform:rotate(5deg) scale(1.1)}
+.pact{position:absolute;bottom:0;left:0;right:0;padding:16px;display:flex;gap:8px;transform:translateY(100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
+.pc:hover .pact{transform:translateY(0)}
+.ba{flex:1;padding:12px 0;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;border:none;background:rgba(255,255,255,.95);color:var(--black);font-weight:400;transition:background .3s}
+.ba:hover{background:#fff}
+.bw{padding:12px 14px;border:none;background:rgba(255,255,255,.95);display:flex;align-items:center;transition:background .3s}
+.bw:hover{background:#fff}
+.pfab{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--warm);margin-bottom:6px;font-weight:300}
+.pn{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--black);margin-bottom:6px;font-weight:400}
+.pp{font-size:14px;color:var(--char);font-weight:300}
+.va{text-align:center;margin-top:64px}
+.btn-va{font-size:12px;letter-spacing:3px;text-transform:uppercase;padding:16px 56px;background:transparent;color:var(--black);border:1px solid var(--sand);font-weight:300;transition:all .4s}
+.btn-va:hover{background:var(--black);color:#fff;border-color:var(--black)}
 
-/* ───── BESPOKE ───── */
-.bespoke{background:var(--black);padding:120px 48px;position:relative;overflow:hidden;}
-.bespoke-bg{position:absolute;top:0;right:0;width:40%;height:100%;background:linear-gradient(180deg,rgba(184,149,106,.05) 0%,transparent 100%);}
-.bespoke-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto;position:relative;z-index:2;}
-.bespoke-label{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;font-weight:300;}
-.bespoke-title{font-family:'Cormorant Garamond',serif;font-size:52px;color:#fff;font-weight:300;line-height:1.15;margin-bottom:24px;}
-.bespoke-title span{font-style:italic;color:var(--gold-lt);}
-.bespoke-desc{font-size:15px;line-height:1.8;color:rgba(255,255,255,.5);font-weight:200;margin-bottom:48px;}
-.step{padding:24px 0;border-bottom:1px solid rgba(255,255,255,.1);cursor:pointer;transition:all .4s;}
-.step:first-child{border-top:1px solid rgba(255,255,255,.1);}
-.step-row{display:flex;align-items:flex-start;gap:20px;}
-.step-num{font-family:'Cormorant Garamond',serif;font-size:28px;color:rgba(255,255,255,.2);font-weight:300;transition:color .4s;min-width:40px;}
-.step.active .step-num{color:var(--gold);}
-.step-title{font-size:15px;font-weight:400;color:rgba(255,255,255,.4);transition:all .4s;}
-.step.active .step-title{color:#fff;margin-bottom:8px;}
-.step-desc{font-size:13px;line-height:1.7;color:rgba(255,255,255,.4);font-weight:200;max-height:0;opacity:0;overflow:hidden;transition:all .5s cubic-bezier(.4,0,.2,1);}
-.step.active .step-desc{max-height:100px;opacity:1;}
-.bespoke-visual{width:100%;max-width:420px;aspect-ratio:3/4;background:linear-gradient(135deg,rgba(184,149,106,.1),rgba(139,69,19,.15));border:1px solid rgba(184,149,106,.15);display:flex;align-items:center;justify-content:center;position:relative;margin:0 auto;}
-.corner{position:absolute;width:20px;height:20px;}
-.corner.tl{top:12px;left:12px;border-top:1px solid rgba(184,149,106,.3);border-left:1px solid rgba(184,149,106,.3);}
-.corner.tr{top:12px;right:12px;border-top:1px solid rgba(184,149,106,.3);border-right:1px solid rgba(184,149,106,.3);}
-.corner.bl{bottom:12px;left:12px;border-bottom:1px solid rgba(184,149,106,.3);border-left:1px solid rgba(184,149,106,.3);}
-.corner.br{bottom:12px;right:12px;border-bottom:1px solid rgba(184,149,106,.3);border-right:1px solid rgba(184,149,106,.3);}
-.bespoke-cta{width:100%;max-width:420px;margin:20px auto 0;display:block;}
+/* ════════════════════════════════════
+   BIOGRAPHY
+   ════════════════════════════════════ */
+.bio{padding:120px 48px;background:var(--white);position:relative;overflow:hidden}
+.bio-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.bio-portrait{position:relative}
+.bio-frame{aspect-ratio:3/4;background:linear-gradient(135deg,var(--cream),#E8DDD5);position:relative;overflow:hidden}
+.bio-frame-img{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#E8DDD5 0%,#D4C5B5 40%,var(--cream) 100%)}
+.bio-monogram{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Cormorant Garamond',serif;font-size:180px;color:rgba(184,149,106,.08);font-weight:300;pointer-events:none}
+.bio-accent{position:absolute;bottom:-20px;right:-20px;width:180px;height:180px;border:1px solid var(--gold);opacity:.15}
+.bio-accent2{position:absolute;top:-15px;left:-15px;width:120px;height:120px;border:1px solid var(--gold);opacity:.1}
+.bio-text .sec-tag{margin-bottom:20px}
+.bio-name{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;line-height:1.15;margin-bottom:8px;color:var(--black)}
+.bio-name em{font-style:italic;color:var(--gold)}
+.bio-role{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--warm);font-weight:300;margin-bottom:32px}
+.bio-p{font-size:15px;line-height:1.85;color:var(--warm);font-weight:200;margin-bottom:20px}
+.bio-p strong{font-weight:400;color:var(--char)}
+.bio-quote{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:var(--char);line-height:1.5;margin:32px 0;padding-left:24px;border-left:2px solid var(--gold)}
+.bio-ig{display:inline-flex;align-items:center;gap:12px;margin-top:24px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--black);font-weight:400;border-bottom:1px solid var(--sand);padding-bottom:6px;transition:all .4s}
+.bio-ig:hover{color:var(--gold);border-bottom-color:var(--gold);gap:16px}
+.bio-ig svg{width:18px;height:18px}
+.bio-values{display:flex;gap:32px;margin-top:40px;padding-top:32px;border-top:1px solid var(--cream)}
+.bio-val{text-align:center;flex:1}
+.bio-val-num{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold);font-weight:400;margin-bottom:4px}
+.bio-val-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--warm);font-weight:300}
 
-/* ───── EDITORIAL ───── */
-.editorial-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
-.editorial-card{aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:flex-end;padding:48px;position:relative;overflow:hidden;}
-.editorial-card.light{background:linear-gradient(135deg,var(--cream),#E8DDD5);}
-.editorial-card.dark{background:linear-gradient(135deg,#1a1520,#2a1a2a,#1B1464);}
-.editorial-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-10deg);font-family:'Cormorant Garamond',serif;font-size:200px;color:rgba(184,149,106,.08);font-weight:300;white-space:nowrap;pointer-events:none;}
-.editorial-pattern{position:absolute;inset:0;background-image:repeating-linear-gradient(60deg,transparent,transparent 30px,rgba(184,149,106,.02) 30px,rgba(184,149,106,.02) 31px);pointer-events:none;}
-.editorial-inner{position:relative;z-index:2;}
-.editorial-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;font-weight:300;}
-.editorial-card.light .editorial-label{color:var(--warm);}
-.editorial-card.dark .editorial-label{color:var(--gold);}
-.editorial-heading{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:400;line-height:1.2;margin-bottom:20px;}
-.editorial-card.light .editorial-heading{color:var(--black);}
-.editorial-card.dark .editorial-heading{color:#fff;}
-.editorial-text{font-size:14px;line-height:1.7;font-weight:200;max-width:320px;}
-.editorial-card.light .editorial-text{color:var(--warm);}
-.editorial-link{display:inline-flex;align-items:center;gap:12px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-lt);font-weight:300;cursor:pointer;transition:gap .3s;}
-.editorial-link:hover{gap:18px;}
+/* ════════════════════════════════════
+   BESPOKE
+   ════════════════════════════════════ */
+.bspk{background:var(--black);padding:120px 48px;position:relative;overflow:hidden}
+.bspk-bg{position:absolute;top:0;right:0;width:40%;height:100%;background:linear-gradient(180deg,rgba(184,149,106,.05) 0%,transparent 100%)}
+.bspk-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:2}
+.bspk-tag{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;font-weight:300}
+.bspk h2{font-family:'Cormorant Garamond',serif;font-size:52px;color:#fff;font-weight:300;line-height:1.15;margin-bottom:24px}
+.bspk h2 em{font-style:italic;color:var(--gold-lt)}
+.bspk-desc{font-size:15px;line-height:1.8;color:rgba(255,255,255,.5);font-weight:200;margin-bottom:48px}
+.step{padding:24px 0;border-bottom:1px solid rgba(255,255,255,.1);cursor:pointer;transition:all .4s}
+.step:first-child{border-top:1px solid rgba(255,255,255,.1)}
+.step-h{display:flex;align-items:flex-start;gap:20px}
+.step-n{font-family:'Cormorant Garamond',serif;font-size:28px;color:rgba(255,255,255,.2);font-weight:300;transition:color .4s;min-width:40px}
+.step.on .step-n{color:var(--gold)}
+.step-t{font-size:15px;font-weight:400;color:rgba(255,255,255,.4);transition:all .4s}
+.step.on .step-t{color:#fff;margin-bottom:8px}
+.step-d{font-size:13px;line-height:1.7;color:rgba(255,255,255,.4);font-weight:200;max-height:0;opacity:0;overflow:hidden;transition:all .5s cubic-bezier(.4,0,.2,1)}
+.step.on .step-d{max-height:120px;opacity:1}
+.bspk-vis{display:flex;flex-direction:column;gap:20px;align-items:center}
+.bspk-frame{width:100%;max-width:420px;aspect-ratio:3/4;background:linear-gradient(135deg,rgba(184,149,106,.1),rgba(139,69,19,.15));border:1px solid rgba(184,149,106,.15);display:flex;align-items:center;justify-content:center;position:relative}
+.crn{position:absolute;width:20px;height:20px}
+.c-tl{top:12px;left:12px;border-top:1px solid rgba(184,149,106,.3);border-left:1px solid rgba(184,149,106,.3)}
+.c-tr{top:12px;right:12px;border-top:1px solid rgba(184,149,106,.3);border-right:1px solid rgba(184,149,106,.3)}
+.c-bl{bottom:12px;left:12px;border-bottom:1px solid rgba(184,149,106,.3);border-left:1px solid rgba(184,149,106,.3)}
+.c-br{bottom:12px;right:12px;border-bottom:1px solid rgba(184,149,106,.3);border-right:1px solid rgba(184,149,106,.3)}
+.bspk-cta{width:100%;max-width:420px}
 
-/* ───── TESTIMONIALS ───── */
-.testimonials{padding:100px 48px;background:var(--white);text-align:center;}
-.testimonials-inner{max-width:700px;margin:0 auto;}
-.quote-mark{font-family:'Cormorant Garamond',serif;font-size:64px;color:var(--sand);line-height:1;margin-bottom:32px;}
-.testimonial-slide{position:relative;min-height:140px;}
-.testimonial{position:absolute;top:0;left:0;right:0;opacity:0;transform:translateY(20px);transition:all .8s cubic-bezier(.4,0,.2,1);}
-.testimonial:first-child{position:relative;}
-.testimonial.active{opacity:1;transform:translateY(0);}
-.testimonial p{font-family:'Cormorant Garamond',serif;font-size:24px;font-style:italic;color:var(--charcoal);line-height:1.6;font-weight:300;margin-bottom:32px;}
-.testimonial .author{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--warm);font-weight:400;}
-.testimonial .role{font-size:11px;color:var(--sand);font-weight:200;margin-top:4px;}
-.dots{display:flex;gap:8px;justify-content:center;margin-top:40px;}
-.dot{height:6px;border-radius:3px;cursor:pointer;transition:all .4s;background:var(--sand);}
-.dot.active{width:24px!important;background:var(--gold)!important;}
+/* ════════════════════════════════════
+   EDITORIAL
+   ════════════════════════════════════ */
+.ed-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.ed-lt{aspect-ratio:4/5;background:linear-gradient(135deg,var(--cream),#E8DDD5);display:flex;flex-direction:column;justify-content:flex-end;padding:48px;position:relative;overflow:hidden}
+.ed-wm{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-10deg);font-family:'Cormorant Garamond',serif;font-size:200px;color:rgba(184,149,106,.08);font-weight:300;white-space:nowrap;animation:float 8s ease-in-out infinite}
+.ed-dk{aspect-ratio:4/5;background:linear-gradient(135deg,#1a1520,#2a1a2a,#1B1464);display:flex;flex-direction:column;justify-content:flex-end;padding:48px;position:relative;overflow:hidden}
+.ed-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(60deg,transparent,transparent 30px,rgba(184,149,106,.02) 30px,rgba(184,149,106,.02) 31px)}
+.ed-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;font-weight:300}
+.ed-title{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:400;line-height:1.2;margin-bottom:20px}
+.ed-txt{font-size:14px;line-height:1.7;font-weight:200;max-width:320px}
+.ed-lnk{display:inline-flex;align-items:center;gap:12px;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:300;cursor:pointer;transition:gap .3s}
+.ed-lnk:hover{gap:18px}
 
-/* ───── NEWSLETTER ───── */
-.newsletter{padding:80px 48px;background:linear-gradient(135deg,var(--cream) 0%,var(--ivory) 100%);border-top:1px solid rgba(196,181,164,.3);border-bottom:1px solid rgba(196,181,164,.3);}
-.newsletter-inner{max-width:600px;margin:0 auto;text-align:center;}
-.newsletter-title{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--black);font-weight:300;margin-bottom:12px;}
-.newsletter-desc{font-size:13px;color:var(--warm);font-weight:200;margin-bottom:32px;line-height:1.7;}
-.newsletter-form{display:flex;gap:0;}
-.newsletter-form input{flex:1;padding:14px 20px;border:1px solid var(--sand);border-right:none;font-family:'Outfit',sans-serif;font-size:13px;font-weight:200;outline:none;background:var(--white);color:var(--black);}
-.newsletter-form button{padding:14px 32px;background:var(--black);color:#fff;border:none;font-family:'Outfit',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-weight:300;transition:background .3s;}
-.newsletter-form button:hover{background:var(--charcoal);}
+/* ════════════════════════════════════
+   TESTIMONIALS
+   ════════════════════════════════════ */
+.testi{padding:100px 48px;background:#fff;text-align:center}
+.tq{font-family:'Cormorant Garamond',serif;font-size:64px;color:var(--sand);line-height:1;margin-bottom:32px}
+.tw{position:relative;min-height:160px;max-width:700px;margin:0 auto}
+.ti{position:absolute;top:0;left:0;right:0;opacity:0;transform:translateY(20px);transition:all .8s cubic-bezier(.4,0,.2,1)}
+.ti:first-child{position:relative}
+.ti.on{opacity:1;transform:translateY(0)}
+.tt{font-family:'Cormorant Garamond',serif;font-size:24px;font-style:italic;color:var(--char);line-height:1.6;font-weight:300;margin-bottom:32px}
+.ta{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--warm);font-weight:400}
+.tr{font-size:11px;color:var(--sand);font-weight:200;margin-top:4px}
+.tdots{display:flex;gap:8px;justify-content:center;margin-top:40px}
+.dot{height:6px;border-radius:3px;cursor:pointer;transition:all .4s;background:var(--sand);width:6px}
+.dot.on{background:var(--gold);width:24px}
 
-/* ───── FOOTER ───── */
-footer{background:var(--black);padding:80px 48px 40px;color:#fff;}
-.footer-inner{max-width:1200px;margin:0 auto;}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:48px;margin-bottom:64px;}
-.footer-brand .logo{font-size:22px;margin-bottom:8px;}
-.footer-brand .logo-sub{margin-bottom:20px;}
-.footer-brand p{font-size:13px;line-height:1.8;color:rgba(255,255,255,.4);font-weight:200;max-width:280px;}
-.footer-col-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-weight:400;}
-.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.4);margin-bottom:10px;font-weight:200;transition:color .3s;}
-.footer-col a:hover{color:rgba(255,255,255,.8);}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:32px;display:flex;justify-content:space-between;align-items:center;}
-.footer-copy{font-size:11px;color:rgba(255,255,255,.3);font-weight:200;letter-spacing:1px;}
-.footer-social{display:flex;gap:20px;}
-.footer-social a{font-size:11px;letter-spacing:1px;color:rgba(255,255,255,.3);font-weight:200;transition:color .3s;}
-.footer-social a:hover{color:var(--gold);}
+/* ════════════════════════════════════
+   NEWSLETTER
+   ════════════════════════════════════ */
+.nl{padding:80px 48px;background:linear-gradient(135deg,var(--cream) 0%,var(--ivory) 100%);border-top:1px solid rgba(196,181,164,.3);border-bottom:1px solid rgba(196,181,164,.3)}
+.nl-in{max-width:600px;margin:0 auto;text-align:center}
+.nl h3{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--black);font-weight:300;margin-bottom:12px}
+.nl h3 em{font-style:italic}
+.nl-p{font-size:13px;color:var(--warm);font-weight:200;margin-bottom:32px;line-height:1.7}
+.nl-form{display:flex}
+.nl-form input{flex:1;padding:14px 20px;border:1px solid var(--sand);border-right:none;font-size:13px;font-weight:200;background:#fff;color:var(--black)}
+.nl-form button{padding:14px 32px;background:var(--black);color:#fff;border:none;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:300;transition:background .3s}
+.nl-form button:hover{background:var(--char)}
 
-/* ───── SCROLL ANIMATIONS ───── */
-.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.4,0,.2,1);}
-.reveal.visible{opacity:1;transform:translateY(0);}
+/* ════════════════════════════════════
+   FOOTER
+   ════════════════════════════════════ */
+.ft{background:var(--black);padding:80px 48px 40px;color:#fff}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:48px;margin-bottom:64px;max-width:1200px;margin-left:auto;margin-right:auto}
+.ft-logo{font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:6px;text-transform:uppercase;font-weight:300;margin-bottom:8px}
+.ft-sub{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--warm);margin-bottom:20px;font-weight:200}
+.ft-txt{font-size:13px;line-height:1.8;color:rgba(255,255,255,.4);font-weight:200;max-width:280px}
+.ft-col-t{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-weight:400}
+.ft-col a{display:block;font-size:13px;color:rgba(255,255,255,.4);margin-bottom:10px;font-weight:200;transition:color .3s}
+.ft-col a:hover{color:rgba(255,255,255,.8)}
+.ft-bot{border-top:1px solid rgba(255,255,255,.1);padding-top:32px;display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto}
+.ft-copy{font-size:11px;color:rgba(255,255,255,.3);font-weight:200;letter-spacing:1px}
+.ft-soc{display:flex;gap:20px}
+.ft-soc a{font-size:11px;letter-spacing:1px;color:rgba(255,255,255,.3);font-weight:200;transition:color .3s}
+.ft-soc a:hover{color:var(--gold)}
 
-/* ───── RESPONSIVE ───── */
+/* ════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════ */
 @media(max-width:1024px){
-  .hero h1{font-size:52px;}
-  .products-grid{grid-template-columns:repeat(2,1fr);}
-  .bespoke-grid{grid-template-columns:1fr;gap:48px;}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:32px;}
-  .collections-grid{grid-template-columns:1fr;}
-  .editorial-grid{grid-template-columns:1fr;}
-  .nav-links,.nav-right-links{display:none;}
+.hero h2{font-size:52px}
+.hero-photo{width:50%;opacity:.6}
+.pgrid{grid-template-columns:repeat(2,1fr)}
+.bspk-grid{grid-template-columns:1fr}
+.ed-grid{grid-template-columns:1fr}
+.ed-lt,.ed-dk{aspect-ratio:auto;min-height:400px}
+.ft-grid{grid-template-columns:1fr 1fr}
+.coll-grid{grid-template-columns:1fr}
+.coll{height:320px}
+.nav-links,.nav-right>a{display:none}
+.bio-inner{grid-template-columns:1fr;gap:48px}
+.bio-portrait{max-width:400px;margin:0 auto}
 }
-@media(max-width:640px){
-  .hero h1{font-size:38px;}
-  .section{padding:64px 24px;}
-  .products-grid{grid-template-columns:1fr 1fr;gap:16px;}
-  .hero-btns{flex-direction:column;width:100%;max-width:300px;}
-  .hero-btns button{width:100%;}
-  .nav-inner{padding:12px 20px;}
-  .products-header{flex-direction:column;align-items:flex-start;gap:24px;}
-  .filter-btns{flex-wrap:wrap;gap:12px;}
-  .footer-grid{grid-template-columns:1fr;}
-  .bespoke{padding:80px 24px;}
-  .bespoke-title{font-size:36px;}
+@media(max-width:768px){
+.hero h2{font-size:36px}
+.hero-photo{width:100%;opacity:.3}
+.hero-photo-overlay{background:linear-gradient(to top,var(--black) 10%,rgba(10,10,10,.6) 50%,rgba(10,10,10,.3) 100%)}
+.hero-content{align-items:center;text-align:center;max-width:100%}
+.bspk h2{font-size:36px}
+.sec{padding:64px 24px}
+.nav-main{padding:12px 20px}
+.hero-content{padding:0 24px}
+.pgrid{grid-template-columns:1fr 1fr;gap:16px}
+.prod-hdr{flex-direction:column;align-items:flex-start;gap:24px}
+.hero-btns{flex-direction:column;width:100%;max-width:320px}
+.hero-btns button{width:100%}
+.ft-grid{grid-template-columns:1fr}
+.ft-bot{flex-direction:column;gap:16px;text-align:center}
+.bio{padding:80px 24px}
+.bio-name{font-size:36px}
+.bio-values{flex-direction:column;gap:20px}
+.sec-title{font-size:34px}
 }
 </style>
 </head>
 <body>
 
-<!-- ═══════ NAVBAR ═══════ -->
-<nav class="navbar" id="navbar">
-  <div class="topbar">Envío complimentario en pedidos superiores a €300 · Cada corbata es una pieza única</div>
-  <div class="nav-inner">
+<!-- ═══════════ NAVIGATION ═══════════ -->
+<nav class="nav" id="navbar">
+  <div class="nav-ribbon">Cada pieza es única · Hechas a mano en Madrid · Envío complimentario +€150</div>
+  <div class="nav-main">
     <div class="nav-links">
-      <a href="#">Colecciones</a><a href="#">Atelier</a><a href="#">Bespoke</a><a href="#">Novias</a>
+      <a href="#colecciones" class="nav-link">Colecciones</a>
+      <a href="#piezas" class="nav-link">Piezas</a>
+      <a href="#bespoke" class="nav-link">Bespoke</a>
+      <a href="#about" class="nav-link">Sobre Mí</a>
     </div>
-    <div class="logo-wrap">
-      <div class="logo">LUZ ORTIZ</div>
-      <div class="logo-sub">Corbatas de Autor · Madrid</div>
+    <div class="nav-logo">
+      <h1>Luz Ortiz</h1>
+      <span>Corbatas de Autor · Madrid</span>
     </div>
     <div class="nav-right">
-      <div class="nav-right-links">
-        <a href="#">La Maison</a><a href="#">Journal</a><a href="#">Contacto</a>
-      </div>
+      <a href="#" class="nav-link">Atelier</a>
+      <a href="#" class="nav-link">Journal</a>
+      <a href="#" class="nav-link">Contacto</a>
       <div class="nav-icons">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        <span style="position:relative">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-          <span class="cart-badge">2</span>
-        </span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <div style="position:relative">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <div class="cart-badge">0</div>
+        </div>
       </div>
     </div>
   </div>
 </nav>
 
-<!-- ═══════ HERO ═══════ -->
+<!-- ═══════════ HERO ═══════════ -->
 <section class="hero">
   <div class="hero-pattern"></div>
   <div class="hero-orb1"></div>
   <div class="hero-orb2"></div>
+  <!-- Hero photo right side -->
+  <div class="hero-photo">
+    <img src="luz-gold-tie.png" alt="Luz Ortiz con corbata dorada vintage">
+    <div class="hero-photo-overlay"></div>
+  </div>
   <div class="hero-content">
-    <div class="hero-label">Colección Primavera · Estate 2026</div>
-    <h1>El Arte de la<br><span>Corbata Única</span></h1>
-    <p>Cada pieza es irrepetible. Seda seleccionada a mano, patrones exclusivos y la maestría artesanal que define el verdadero lujo.</p>
+    <div class="hero-tag">Power Dressing · Redefinido</div>
+    <h2>Corbatas Vintage<br><em>Una Nueva Vida</em></h2>
+    <p class="hero-desc">Piezas únicas hechas a mano en Madrid. Cada corbata vintage es intervenida con bisutería, plumas, cuarzos y joyas para crear una obra irrepetible que te empodera.</p>
     <div class="hero-btns">
-      <button class="btn-gold">Descubrir Colección</button>
-      <button class="btn-outline">Diseña la Tuya</button>
+      <button class="btn-gold" onclick="document.getElementById('colecciones').scrollIntoView({behavior:'smooth'})">Descubrir Colección</button>
+      <button class="btn-out-w" onclick="document.getElementById('bespoke').scrollIntoView({behavior:'smooth'})">Envía Tu Corbata</button>
     </div>
     <div class="scroll-ind">
       <span>Scroll</span>
@@ -275,330 +347,330 @@ footer{background:var(--black);padding:80px 48px 40px;color:#fff;}
   </div>
 </section>
 
-<!-- ═══════ MARQUEE ═══════ -->
-<div class="marquee-strip">
+<!-- ═══════════ MARQUEE ═══════════ -->
+<div class="marquee">
   <div class="marquee-track">
-    <span>&nbsp;&nbsp;✦&nbsp;&nbsp;Seda 100% Italiana&nbsp;&nbsp;✦&nbsp;&nbsp;Confección Artesanal&nbsp;&nbsp;✦&nbsp;&nbsp;Piezas Únicas&nbsp;&nbsp;✦&nbsp;&nbsp;Envío Mundial&nbsp;&nbsp;✦&nbsp;&nbsp;Certificado de Autenticidad&nbsp;&nbsp;✦&nbsp;&nbsp;Hecho en España&nbsp;&nbsp;✦&nbsp;&nbsp;Personalización Total&nbsp;&nbsp;✦&nbsp;&nbsp;Sostenibilidad&nbsp;&nbsp;</span>
-    <span>&nbsp;&nbsp;✦&nbsp;&nbsp;Seda 100% Italiana&nbsp;&nbsp;✦&nbsp;&nbsp;Confección Artesanal&nbsp;&nbsp;✦&nbsp;&nbsp;Piezas Únicas&nbsp;&nbsp;✦&nbsp;&nbsp;Envío Mundial&nbsp;&nbsp;✦&nbsp;&nbsp;Certificado de Autenticidad&nbsp;&nbsp;✦&nbsp;&nbsp;Hecho en España&nbsp;&nbsp;✦&nbsp;&nbsp;Personalización Total&nbsp;&nbsp;✦&nbsp;&nbsp;Sostenibilidad&nbsp;&nbsp;</span>
+    <span>&nbsp;&nbsp;✦&nbsp;&nbsp;Piezas Únicas&nbsp;&nbsp;✦&nbsp;&nbsp;Hechas a Mano&nbsp;&nbsp;✦&nbsp;&nbsp;Corbatas Vintage Intervenidas&nbsp;&nbsp;✦&nbsp;&nbsp;Power Dressing&nbsp;&nbsp;✦&nbsp;&nbsp;Sostenibilidad&nbsp;&nbsp;✦&nbsp;&nbsp;Atelier Madrid&nbsp;&nbsp;✦&nbsp;&nbsp;Bisutería &amp; Joya&nbsp;&nbsp;✦&nbsp;&nbsp;Cada Pieza Tiene Su Historia&nbsp;&nbsp;</span>
+    <span>&nbsp;&nbsp;✦&nbsp;&nbsp;Piezas Únicas&nbsp;&nbsp;✦&nbsp;&nbsp;Hechas a Mano&nbsp;&nbsp;✦&nbsp;&nbsp;Corbatas Vintage Intervenidas&nbsp;&nbsp;✦&nbsp;&nbsp;Power Dressing&nbsp;&nbsp;✦&nbsp;&nbsp;Sostenibilidad&nbsp;&nbsp;✦&nbsp;&nbsp;Atelier Madrid&nbsp;&nbsp;✦&nbsp;&nbsp;Bisutería &amp; Joya&nbsp;&nbsp;✦&nbsp;&nbsp;Cada Pieza Tiene Su Historia&nbsp;&nbsp;</span>
   </div>
 </div>
 
-<!-- ═══════ COLLECTIONS ═══════ -->
-<section class="section" style="background:var(--white)">
-  <div class="section-center" style="text-align:center">
-    <div class="section-label reveal">Explora</div>
-    <h2 class="section-title reveal">Nuestras <em>Colecciones</em></h2>
-    <div class="collections-grid">
-      <div class="col-card reveal" style="background:linear-gradient(135deg,#D4B896 0%,#F5F0EB 50%,#C4B5A4 100%)">
-        <div class="col-card-overlay"></div>
-        <div class="col-card-content">
-          <div class="col-count">24 piezas</div>
-          <div class="col-name">Primavera Estate 2026</div>
-          <div class="col-desc">La nueva temporada</div>
-          <div class="col-link">Explorar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></div>
+<!-- ═══════════ COLLECTIONS ═══════════ -->
+<section class="sec" id="colecciones" style="background:#fff">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;margin-bottom:64px">
+      <div class="sec-tag">Explora</div>
+      <h2 class="sec-title">Nuestras <em>Colecciones</em></h2>
+    </div>
+    <div class="coll-grid">
+      <div class="coll reveal" style="background:#C4B5A4">
+        <img src="luz-feather-tie.png" alt="Corbata con plumas" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <div class="ov"></div>
+        <div class="coll-info">
+          <div class="coll-cnt">Colección principal</div>
+          <div class="coll-name">Clásica &amp; Plumas</div>
+          <div class="coll-desc">Elegancia esencial con toques de pluma natural</div>
+          <a href="#" class="coll-lnk">Explorar <svg class="arrow-svg" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a>
         </div>
       </div>
-      <div class="col-card reveal" style="background:linear-gradient(135deg,#1B1464 0%,#2D1B69 50%,#4A0E2A 100%)">
-        <div class="col-card-overlay"></div>
-        <div class="col-card-content">
-          <div class="col-count">18 piezas</div>
-          <div class="col-name">Ceremonia</div>
-          <div class="col-desc">Para momentos únicos</div>
-          <div class="col-link">Explorar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></div>
+      <div class="coll reveal" style="background:#2C2C2C">
+        <img src="luz-pattern-tie.png" alt="Corbata joya con broche dorado" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <div class="ov"></div>
+        <div class="coll-info">
+          <div class="coll-cnt">Piezas de excepción</div>
+          <div class="coll-name">Corbatas Joya</div>
+          <div class="coll-desc">Cuarzos, piedras y bisutería vintage sobre seda</div>
+          <a href="#" class="coll-lnk">Explorar <svg class="arrow-svg" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a>
         </div>
       </div>
-      <div class="col-card reveal" style="background:linear-gradient(135deg,#1A1A1A 0%,#2C2C2C 50%,#3A3A3A 100%)">
-        <div class="col-card-overlay"></div>
-        <div class="col-card-content">
-          <div class="col-count">32 piezas</div>
-          <div class="col-name">Business Elite</div>
-          <div class="col-desc">Poder silencioso</div>
-          <div class="col-link">Explorar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></div>
+      <div class="coll reveal" style="background:#1A1A1A">
+        <img src="luz-gold-tie.png" alt="Corbata dorada vintage luxury" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%">
+        <div class="ov"></div>
+        <div class="coll-info">
+          <div class="coll-cnt">Marcas icónicas reinventadas</div>
+          <div class="coll-name">Vintage Luxury Brands</div>
+          <div class="coll-desc">Corbatas de casas de lujo transformadas en piezas únicas</div>
+          <a href="#" class="coll-lnk">Explorar <svg class="arrow-svg" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ PRODUCTS ═══════ -->
-<section class="section" style="background:var(--ivory)">
-  <div class="section-wide">
-    <div class="products-header">
+<!-- ═══════════ PRODUCTS ═══════════ -->
+<section class="sec" id="piezas" style="background:var(--ivory)">
+  <div class="inner-w">
+    <div class="prod-hdr reveal">
       <div>
-        <div class="section-label reveal">Lo más nuevo</div>
-        <h2 class="section-title reveal">Piezas <em>Únicas</em></h2>
+        <div class="sec-tag">Lo más nuevo</div>
+        <h2 class="sec-title">Piezas <em>Únicas</em></h2>
       </div>
-      <div class="filter-btns">
-        <button class="filter-btn active">Todo</button>
-        <button class="filter-btn">Seda</button>
-        <button class="filter-btn">Jacquard</button>
-        <button class="filter-btn">Grenadine</button>
-        <button class="filter-btn">Ceremonia</button>
-      </div>
-    </div>
-    <div class="products-grid" id="productsGrid"></div>
-    <div class="view-all-wrap">
-      <button class="btn-view-all">Ver Toda la Colección</button>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ BESPOKE ═══════ -->
-<section class="bespoke">
-  <div class="bespoke-bg"></div>
-  <div class="bespoke-grid">
-    <div>
-      <div class="bespoke-label reveal">Experiencia Bespoke</div>
-      <h2 class="bespoke-title reveal">Tu Corbata,<br><span>Tu Historia</span></h2>
-      <p class="bespoke-desc reveal">Desde la selección de la seda más exquisita hasta el último punto de costura, cada corbata bespoke es un viaje personal hacia la excelencia.</p>
-      <div id="stepsContainer">
-        <div class="step active" data-index="0">
-          <div class="step-row">
-            <span class="step-num">01</span>
-            <div>
-              <div class="step-title">Consulta</div>
-              <div class="step-desc">Agenda una cita privada en nuestro atelier de Madrid o virtualmente. Exploramos tu visión, estilo personal y la ocasión.</div>
-            </div>
-          </div>
-        </div>
-        <div class="step" data-index="1">
-          <div class="step-row">
-            <span class="step-num">02</span>
-            <div>
-              <div class="step-title">Diseño</div>
-              <div class="step-desc">Nuestros diseñadores crean bocetos exclusivos. Selecciona sedas, patrones y detalles de acabado.</div>
-            </div>
-          </div>
-        </div>
-        <div class="step" data-index="2">
-          <div class="step-row">
-            <span class="step-num">03</span>
-            <div>
-              <div class="step-title">Confección</div>
-              <div class="step-desc">Artesanos con más de 30 años de experiencia dan vida a tu diseño, cosiendo cada puntada a mano.</div>
-            </div>
-          </div>
-        </div>
-        <div class="step" data-index="3">
-          <div class="step-row">
-            <span class="step-num">04</span>
-            <div>
-              <div class="step-title">Entrega</div>
-              <div class="step-desc">Tu corbata única llega en un estuche de presentación, con certificado de autenticidad y monograma.</div>
-            </div>
-          </div>
-        </div>
+      <div class="fbar">
+        <button class="fbtn on">Todo</button>
+        <button class="fbtn">Clásica</button>
+        <button class="fbtn">Plumas</button>
+        <button class="fbtn">Cuarzos</button>
+        <button class="fbtn">Joya</button>
       </div>
     </div>
-    <div style="display:flex;flex-direction:column;align-items:center">
-      <div class="bespoke-visual">
-        <svg width="120" height="320" viewBox="0 0 120 320" style="opacity:.3;animation:float 6s ease-in-out infinite">
-          <defs><linearGradient id="tieGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#B8956A" stop-opacity=".8"/><stop offset="100%" stop-color="#8B4513" stop-opacity=".4"/></linearGradient></defs>
-          <path d="M48 0 L72 0 L76 24 L80 50 L70 150 L78 290 L60 320 L42 290 L50 150 L40 50 L44 24 Z" fill="url(#tieGrad)" stroke="#B8956A" stroke-width=".5"/>
-          <path d="M44 24 L76 24 L80 50 L40 50 Z" fill="rgba(184,149,106,.2)"/>
-          <line x1="60" y1="60" x2="60" y2="280" stroke="#B8956A" stroke-width=".3" stroke-dasharray="4,8"/>
-        </svg>
-        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
-      </div>
-      <button class="btn-gold bespoke-cta">Solicitar Cita Privada</button>
+    <div class="pgrid" id="pgrid"></div>
+    <div class="va reveal">
+      <button class="btn-va">Ver Toda la Colección</button>
     </div>
   </div>
 </section>
 
-<!-- ═══════ EDITORIAL ═══════ -->
-<section class="section" style="background:var(--ivory)">
-  <div class="section-center">
-    <div class="editorial-grid">
-      <div class="editorial-card light reveal">
-        <div class="editorial-watermark">LO</div>
-        <div class="editorial-inner">
-          <div class="editorial-label">Edición Limitada</div>
-          <div class="editorial-heading">La Colección<br><em>Nocturnos</em></div>
-          <p class="editorial-text">Inspirada en la profundidad de las noches madrileñas. Solo 12 piezas, cada una numerada y firmada.</p>
-        </div>
+<!-- ═══════════ BIOGRAPHY ═══════════ -->
+<section class="bio" id="about">
+  <div class="bio-inner">
+    <div class="bio-portrait reveal">
+      <div class="bio-frame">
+        <img src="luz-blue-tie.png" alt="Luz Ortiz - Fundadora" style="width:100%;height:100%;object-fit:cover;object-position:center top">
+        <div class="bio-accent"></div>
+        <div class="bio-accent2"></div>
       </div>
-      <div class="editorial-card dark reveal">
-        <div class="editorial-pattern"></div>
-        <div class="editorial-inner">
-          <div class="editorial-label">Journal</div>
-          <div class="editorial-heading">El Renacimiento<br><em>de la Corbata</em></div>
-          <a class="editorial-link" href="#">Leer en Porter <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a>
+    </div>
+    <div class="bio-text">
+      <div class="sec-tag reveal">La Creadora</div>
+      <h2 class="bio-name reveal">Luz <em>Ortiz</em></h2>
+      <div class="bio-role reveal">Fundadora &amp; Diseñadora · Luz Ortiz Atelier</div>
+      <p class="bio-p reveal">
+        Mexicana, española, texicana. Madre de cinco, emprendedora y apasionada de la moda con propósito. 
+        Luz comenzó su camino en el diseño interviniendo prendas de su propio armario: <strong>dos blusas olvidadas se convirtieron en una pieza completamente nueva</strong>, y ahí nació todo.
+      </p>
+      <p class="bio-p reveal">
+        Mientras cursaba su <strong>Máster en Moda</strong>, descubrió la tendencia de la corbata femenina y tuvo la visión: comprar corbatas vintage y transformarlas con bisutería, plumas, cuarzos y joyas en <strong>piezas únicas que empoderan a quien las lleva</strong>.
+      </p>
+      <div class="bio-quote reveal">
+        "Con el fast fashion muchas vestimos igual. Mi corbata le da a tu outfit algo que nadie más tiene: tu historia."
+      </div>
+      <p class="bio-p reveal">
+        Un viaje a Tanzania, donde vio montañas de ropa desechada, selló su compromiso con la <strong>sostenibilidad</strong>. 
+        Cada corbata de Luz Ortiz es una declaración: se puede ser elegante, única y consciente a la vez. 
+        El epítome del <strong>power dressing</strong> sin perder la feminidad.
+      </p>
+      <a href="https://www.instagram.com/luzortizbxbt/" target="_blank" rel="noopener noreferrer" class="bio-ig reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        @luzortizbxbt
+        <svg class="arrow-svg" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+      </a>
+      <div class="bio-values reveal">
+        <div class="bio-val">
+          <div class="bio-val-num">100%</div>
+          <div class="bio-val-lbl">Hecho a Mano</div>
+        </div>
+        <div class="bio-val">
+          <div class="bio-val-num">0</div>
+          <div class="bio-val-lbl">Piezas Repetidas</div>
+        </div>
+        <div class="bio-val">
+          <div class="bio-val-num">Madrid</div>
+          <div class="bio-val-lbl">Atelier</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ TESTIMONIALS ═══════ -->
-<section class="testimonials">
-  <div class="testimonials-inner">
-    <div class="quote-mark">"</div>
-    <div class="testimonial-slide" id="testimonialSlide">
-      <div class="testimonial active">
-        <p>Nunca pensé que una corbata pudiera contar una historia. La mía cuenta la de mi familia.</p>
-        <div class="author">Alejandro R.</div>
-        <div class="role">Madrid</div>
+<!-- ═══════════ BESPOKE ═══════════ -->
+<section class="bspk" id="bespoke">
+  <div class="bspk-bg"></div>
+  <div class="inner">
+    <div class="bspk-grid">
+      <div>
+        <div class="bspk-tag reveal">Experiencia Bespoke</div>
+        <h2 class="reveal">Tu Corbata,<br><em>Tu Historia</em></h2>
+        <p class="bspk-desc reveal">Envíanos la corbata de un ser querido — vivo o que ya no está — y la transformamos en una pieza única y ponible para ti. Una nueva vida para una historia que importa.</p>
+        <div id="stepsC">
+          <div class="step on" data-s="0">
+            <div class="step-h"><span class="step-n">01</span><div><div class="step-t">Consulta</div><div class="step-d">Cuéntanos la historia de tu corbata. Agenda una cita en el atelier de Madrid o virtualmente. Juntas definimos tu visión.</div></div></div>
+          </div>
+          <div class="step" data-s="1">
+            <div class="step-h"><span class="step-n">02</span><div><div class="step-t">Diseño</div><div class="step-d">Creamos un diseño exclusivo para tu pieza. Eliges bisutería, plumas, cuarzos o joya que la hará única.</div></div></div>
+          </div>
+          <div class="step" data-s="2">
+            <div class="step-h"><span class="step-n">03</span><div><div class="step-t">Confección</div><div class="step-d">Cada intervención es completamente manual. Tu corbata vintage se transforma en una pieza de autor en nuestro atelier.</div></div></div>
+          </div>
+          <div class="step" data-s="3">
+            <div class="step-h"><span class="step-n">04</span><div><div class="step-t">Entrega</div><div class="step-d">Tu pieza llega en un packaging especial con su tarjeta de autenticidad. Una nueva vida, lista para crear nuevas memorias.</div></div></div>
+          </div>
+        </div>
       </div>
-      <div class="testimonial">
-        <p>La atención al detalle es extraordinaria. Cada vez que la uso, alguien me pregunta dónde la compré.</p>
-        <div class="author">Carlos M.</div>
-        <div class="role">Barcelona</div>
-      </div>
-      <div class="testimonial">
-        <p>Mi corbata de boda fue una obra de arte. Luz entendió exactamente lo que quería sin que pudiera expresarlo.</p>
-        <div class="author">Diego F.</div>
-        <div class="role">México DF</div>
+      <div class="bspk-vis">
+        <div class="bspk-frame">
+          <svg width="120" height="320" viewBox="0 0 120 320" style="opacity:.3;animation:breathe 4s ease-in-out infinite">
+            <defs><linearGradient id="tG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#B8956A" stop-opacity=".8"/><stop offset="100%" stop-color="#8B4513" stop-opacity=".4"/></linearGradient></defs>
+            <path d="M48 0 L72 0 L76 24 L80 50 L70 150 L78 290 L60 320 L42 290 L50 150 L40 50 L44 24 Z" fill="url(#tG)" stroke="#B8956A" stroke-width=".5"/>
+            <path d="M44 24 L76 24 L80 50 L40 50 Z" fill="rgba(184,149,106,.2)"/>
+            <line x1="60" y1="60" x2="60" y2="280" stroke="#B8956A" stroke-width=".3" stroke-dasharray="4,8"/>
+            <circle cx="60" cy="90" r="8" fill="none" stroke="#B8956A" stroke-width=".4"/>
+            <circle cx="60" cy="90" r="3" fill="#B8956A" opacity=".3"/>
+          </svg>
+          <div class="crn c-tl"></div><div class="crn c-tr"></div><div class="crn c-bl"></div><div class="crn c-br"></div>
+        </div>
+        <button class="btn-gold bspk-cta">Solicitar Cita Privada</button>
       </div>
     </div>
-    <div class="dots" id="dots"></div>
   </div>
 </section>
 
-<!-- ═══════ NEWSLETTER ═══════ -->
-<section class="newsletter">
-  <div class="newsletter-inner">
-    <div class="section-label">Newsletter</div>
-    <h3 class="newsletter-title">Recibe novedades <em>exclusivas</em></h3>
-    <p class="newsletter-desc">Acceso anticipado a nuevas colecciones, invitaciones a eventos privados y contenido editorial sobre el arte de la sastrería.</p>
-    <div class="newsletter-form">
+<!-- ═══════════ EDITORIAL ═══════════ -->
+<section class="sec" style="background:var(--ivory)">
+  <div class="inner">
+    <div class="ed-grid">
+      <div class="ed-lt reveal" style="background:none">
+        <img src="luz-feather-tie.png" alt="Corbata con plumas y cuarzo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(245,240,235,.95) 0%,rgba(245,240,235,.7) 40%,rgba(245,240,235,.3) 100%)"></div>
+        <div class="ed-wm">LO</div>
+        <div style="position:relative;z-index:2">
+          <div class="ed-tag" style="color:var(--char)">Edición Limitada</div>
+          <div class="ed-title" style="color:var(--black)">Colección<br><em>Cuarzos</em></div>
+          <p class="ed-txt" style="color:var(--char)">Energía natural sobre seda vintage. Cuarzos seleccionados que aportan intención y belleza a cada pieza.</p>
+        </div>
+      </div>
+      <div class="ed-dk reveal" style="background:none">
+        <img src="luz-pattern-tie.png" alt="Corbata con broche joya dorado" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.9) 0%,rgba(10,10,10,.5) 40%,rgba(10,10,10,.2) 100%)"></div>
+        <div class="ed-lines"></div>
+        <div style="position:relative;z-index:2">
+          <div class="ed-tag" style="color:var(--gold)">Journal</div>
+          <div class="ed-title" style="color:#fff">El Renacimiento<br><em>de la Corbata</em></div>
+          <a href="#" class="ed-lnk" style="color:var(--gold-lt)">Leer Artículo <svg class="arrow-svg" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TESTIMONIALS ═══════════ -->
+<section class="testi">
+  <div style="max-width:700px;margin:0 auto">
+    <div class="tq reveal">"</div>
+    <div class="tw" id="tw"></div>
+    <div class="tdots" id="tdots"></div>
+  </div>
+</section>
+
+<!-- ═══════════ NEWSLETTER ═══════════ -->
+<section class="nl">
+  <div class="nl-in reveal">
+    <div class="sec-tag">Newsletter</div>
+    <h3>Recibe novedades <em>exclusivas</em></h3>
+    <p class="nl-p">Acceso anticipado a nuevas piezas, invitaciones a eventos privados del atelier y contenido sobre poder femenino y estilo.</p>
+    <div class="nl-form">
       <input type="email" placeholder="Tu email">
       <button>Suscribirse</button>
     </div>
   </div>
 </section>
 
-<!-- ═══════ FOOTER ═══════ -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="logo">LUZ ORTIZ</div>
-        <div class="logo-sub">Corbatas de Autor</div>
-        <p>Cada corbata es una declaración de identidad. Diseñadas en Madrid, confeccionadas con los materiales más nobles del mundo.</p>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Colecciones</div>
-        <a href="#">Primavera/Verano</a><a href="#">Otoño/Invierno</a><a href="#">Ceremonia</a><a href="#">Business Elite</a><a href="#">Ediciones Limitadas</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Servicios</div>
-        <a href="#">Bespoke</a><a href="#">Personal Shopper</a><a href="#">Gift Cards</a><a href="#">Monograma</a><a href="#">Corporate</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">La Maison</div>
-        <a href="#">Nuestra Historia</a><a href="#">Artesanos</a><a href="#">Sostenibilidad</a><a href="#">Prensa</a><a href="#">Carreras</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Atención</div>
-        <a href="#">Contacto</a><a href="#">FAQ</a><a href="#">Envíos</a><a href="#">Devoluciones</a><a href="#">Cuidado de la Seda</a>
-      </div>
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="ft">
+  <div class="ft-grid">
+    <div>
+      <div class="ft-logo">Luz Ortiz</div>
+      <div class="ft-sub">Corbatas de Autor</div>
+      <p class="ft-txt">Cada corbata es una declaración de identidad. Piezas vintage intervenidas a mano en Madrid con bisutería, plumas, cuarzos y joyas.</p>
+      <a href="https://www.instagram.com/luzortizbxbt/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;margin-top:20px;color:rgba(255,255,255,.5);font-size:12px;transition:color .3s" onmouseover="this.style.color='#B8956A'" onmouseout="this.style.color='rgba(255,255,255,.5)'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        @luzortizbxbt
+      </a>
     </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2026 Luz Ortiz · Corbatas de Autor. Todos los derechos reservados.</div>
-      <div class="footer-social">
-        <a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">LinkedIn</a>
-      </div>
+    <div class="ft-col">
+      <div class="ft-col-t">Colecciones</div>
+      <a href="#">Clásica</a><a href="#">Plumas</a><a href="#">Cuarzos</a><a href="#">Joya</a><a href="#">Vintage Luxury</a><a href="#">Lino Verano</a>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-t">Servicios</div>
+      <a href="#">Bespoke</a><a href="#">Corbata Memorial</a><a href="#">Gift Cards</a><a href="#">Personal Styling</a><a href="#">Corporate</a>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-t">Luz Ortiz</div>
+      <a href="#">Nuestra Historia</a><a href="#">Sostenibilidad</a><a href="#">Prensa</a><a href="#">Atelier Madrid</a>
+    </div>
+    <div class="ft-col">
+      <div class="ft-col-t">Atención</div>
+      <a href="#">Contacto</a><a href="#">FAQ</a><a href="#">Envíos</a><a href="#">Devoluciones</a><a href="#">Cuidado de la Pieza</a>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <div class="ft-copy">© 2026 Luz Ortiz · Corbatas de Autor. Todas las piezas son únicas y hechas a mano en Madrid.</div>
+    <div class="ft-soc">
+      <a href="https://www.instagram.com/luzortizbxbt/" target="_blank">Instagram</a>
+      <a href="#">Pinterest</a>
+      <a href="#">TikTok</a>
     </div>
   </div>
 </footer>
 
+<!-- ═══════════ JAVASCRIPT ═══════════ -->
 <script>
-// ───── PRODUCTS ─────
-const products = [
-  {id:1,name:"Midnight Byzantium",price:385,fabric:"Seda Italiana Jacquard",tag:"NUEVA COLECCIÓN",img:"linear-gradient(135deg,#1B1464,#2D1B69,#0D0D3B)"},
-  {id:2,name:"Toscana Dorada",price:420,fabric:"Seda Dupioni Toscana",tag:"EXCLUSIVA",img:"linear-gradient(135deg,#8B6914,#B8956A,#6B4F12)"},
-  {id:3,name:"Rosa Damasco",price:395,fabric:"Seda Charmeuse",tag:"EDICIÓN ÚNICA",img:"linear-gradient(135deg,#8B2252,#C44D7B,#6B1A3E)"},
-  {id:4,name:"Bosque Imperial",price:410,fabric:"Seda Shantung",tag:"BESPOKE",img:"linear-gradient(135deg,#1B4D2E,#2D7A4A,#0E3B1E)"},
-  {id:5,name:"Borgoña Reale",price:450,fabric:"Seda Crêpe de Chine",tag:"ATELIER",img:"linear-gradient(135deg,#4A0E2A,#7A1E48,#380A20)"},
-  {id:6,name:"Azul Capri",price:375,fabric:"Seda Twill Francesa",tag:"NUEVA COLECCIÓN",img:"linear-gradient(135deg,#003B6F,#1A5F9E,#002244)"},
-  {id:7,name:"Terracotta Firenze",price:430,fabric:"Seda Grenadine",tag:"LIMITADA",img:"linear-gradient(135deg,#8B4513,#A0522D,#6B3410)"},
-  {id:8,name:"Plata Lunar",price:465,fabric:"Seda Mikado Plateada",tag:"HAUTE COUTURE",img:"linear-gradient(135deg,#4A4A5A,#6A6A7A,#3A3A4A)"}
+var products=[
+{id:1,name:"Midnight Paisley",price:95,fabric:"Seda Vintage · Bisutería",tag:"CLÁSICA",img:"linear-gradient(135deg,#1B1464,#2D1B69,#0D0D3B)"},
+{id:2,name:"Toscana Dorada",price:150,fabric:"Seda Dupioni · Pluma Natural",tag:"PLUMAS",img:"linear-gradient(135deg,#8B6914,#B8956A,#6B4F12)"},
+{id:3,name:"Rosa Quarzo",price:120,fabric:"Seda Charmeuse · Cuarzo Rosa",tag:"CUARZOS",img:"linear-gradient(135deg,#8B2252,#C44D7B,#6B1A3E)"},
+{id:4,name:"Bosque Imperial",price:85,fabric:"Seda Shantung · Vintage",tag:"CLÁSICA",img:"linear-gradient(135deg,#1B4D2E,#2D7A4A,#0E3B1E)"},
+{id:5,name:"Borgoña Reale",price:450,fabric:"Seda Crêpe · Joya Vintage",tag:"JOYA",img:"linear-gradient(135deg,#4A0E2A,#7A1E48,#380A20)"},
+{id:6,name:"Azul Capri",price:75,fabric:"Seda Twill · Bisutería",tag:"CLÁSICA",img:"linear-gradient(135deg,#003B6F,#1A5F9E,#002244)"},
+{id:7,name:"Terracotta Firenze",price:120,fabric:"Seda Grenadine · Pluma",tag:"PLUMAS",img:"linear-gradient(135deg,#8B4513,#A0522D,#6B3410)"},
+{id:8,name:"Plata Lunar",price:380,fabric:"Seda Mikado · Piedra Lunar",tag:"JOYA",img:"linear-gradient(135deg,#4A4A5A,#6A6A7A,#3A3A4A)"}
 ];
 
-const grid = document.getElementById('productsGrid');
-products.forEach((p, i) => {
-  const card = document.createElement('div');
-  card.className = 'product-card';
-  card.style.animationDelay = (i * 0.1) + 's';
-  card.innerHTML = `
-    <div class="product-img" style="background:${p.img}">
-      <div class="tie-icon">
-        <svg width="60" height="200" viewBox="0 0 60 200">
-          <path d="M25 0 L35 0 L38 15 L40 30 L35 90 L38 180 L30 200 L22 180 L25 90 L20 30 L22 15 Z" fill="rgba(255,255,255,.3)" stroke="rgba(255,255,255,.2)" stroke-width=".5"/>
-          <path d="M22 15 L38 15 L40 30 L20 30 Z" fill="rgba(255,255,255,.15)"/>
-        </svg>
-      </div>
-      <div class="product-tag">${p.tag}</div>
-      <div class="product-actions">
-        <button class="btn-add">Añadir</button>
-        <button class="btn-fav"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
-      </div>
-    </div>
-    <div class="product-fabric">${p.fabric}</div>
-    <div class="product-name">${p.name}</div>
-    <div class="product-price">€${p.price}</div>
-  `;
-  grid.appendChild(card);
+var testimonials=[
+{text:"Nunca pensé que una corbata pudiera contar una historia. La mía cuenta la de mi abuelo y ahora es mía.",author:"Sofía R.",role:"Madrid"},
+{text:"La llevo a mis reuniones de trabajo y siempre me preguntan de dónde es. Me hace sentir poderosa y única.",author:"Carolina M.",role:"Barcelona"},
+{text:"Le envié la corbata de mi padre y la transformó en algo increíble. Ahora la llevo con orgullo y emoción.",author:"Valentina F.",role:"Ciudad de México"}
+];
+
+var g=document.getElementById("pgrid");
+products.forEach(function(p,i){
+var d=document.createElement("div");
+d.className="pc";
+d.style.animationDelay=i*.1+"s";
+d.innerHTML='<div class="pimg" style="background:'+p.img+'"><div class="ptag">'+p.tag+'</div><div class="tsvg"><svg width="60" height="200" viewBox="0 0 60 200"><path d="M25 0 L35 0 L38 15 L40 30 L35 90 L38 180 L30 200 L22 180 L25 90 L20 30 L22 15 Z" fill="rgba(255,255,255,.3)" stroke="rgba(255,255,255,.2)" stroke-width=".5"/><path d="M22 15 L38 15 L40 30 L20 30 Z" fill="rgba(255,255,255,.15)"/></svg></div><div class="pact"><button class="ba">Añadir</button><button class="bw"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button></div></div><div class="pfab">'+p.fabric+'</div><div class="pn">'+p.name+'</div><div class="pp">€'+p.price+'</div>';
+g.appendChild(d);
 });
 
-// ───── FILTER BUTTONS ─────
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  });
+var tw=document.getElementById("tw"),td=document.getElementById("tdots"),at=0;
+testimonials.forEach(function(t,i){
+var el=document.createElement("div");
+el.className="ti"+(i===0?" on":"");
+el.innerHTML='<p class="tt">'+t.text+'</p><div class="ta">'+t.author+'</div><div class="tr">'+t.role+'</div>';
+tw.appendChild(el);
+var dot=document.createElement("div");
+dot.className="dot"+(i===0?" on":"");
+dot.onclick=function(){setT(i)};
+td.appendChild(dot);
 });
-
-// ───── BESPOKE STEPS ─────
-document.querySelectorAll('.step').forEach(step => {
-  step.addEventListener('click', () => {
-    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-    step.classList.add('active');
-  });
-});
-
-// ───── NAVBAR SCROLL ─────
-window.addEventListener('scroll', () => {
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 80);
-});
-
-// ───── TESTIMONIALS ─────
-const testimonials = document.querySelectorAll('.testimonial');
-const dotsContainer = document.getElementById('dots');
-let activeTest = 0;
-
-testimonials.forEach((_, i) => {
-  const dot = document.createElement('div');
-  dot.className = 'dot' + (i === 0 ? ' active' : '');
-  dot.style.width = i === 0 ? '24px' : '6px';
-  dot.addEventListener('click', () => setTestimonial(i));
-  dotsContainer.appendChild(dot);
-});
-
-function setTestimonial(idx) {
-  activeTest = idx;
-  testimonials.forEach((t, i) => t.classList.toggle('active', i === idx));
-  dotsContainer.querySelectorAll('.dot').forEach((d, i) => {
-    d.classList.toggle('active', i === idx);
-    d.style.width = i === idx ? '24px' : '6px';
-  });
+function setT(n){
+at=n;
+document.querySelectorAll(".ti").forEach(function(e,i){e.classList.toggle("on",i===n)});
+document.querySelectorAll(".dot").forEach(function(e,i){e.classList.toggle("on",i===n)});
 }
+setInterval(function(){setT((at+1)%testimonials.length)},5000);
 
-setInterval(() => setTestimonial((activeTest + 1) % testimonials.length), 5000);
+document.querySelectorAll(".step").forEach(function(s){
+s.addEventListener("click",function(){
+document.querySelectorAll(".step").forEach(function(x){x.classList.remove("on")});
+s.classList.add("on");
+});
+});
 
-// ───── SCROLL REVEAL ─────
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
-}, { threshold: 0.15 });
+document.querySelectorAll(".fbtn").forEach(function(b){
+b.addEventListener("click",function(){
+document.querySelectorAll(".fbtn").forEach(function(x){x.classList.remove("on")});
+b.classList.add("on");
+});
+});
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+window.addEventListener("scroll",function(){
+document.getElementById("navbar").classList.toggle("scrolled",window.scrollY>80);
+});
 
-// ───── PRODUCT CARD ANIMATIONS ─────
-const prodObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; prodObserver.unobserve(e.target); }});
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.product-card').forEach(el => prodObserver.observe(el));
+var obs=new IntersectionObserver(function(entries){
+entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add("vis");obs.unobserve(e.target)}});
+},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(function(el){obs.observe(el)});
 </script>
 </body>
 </html>
